@@ -28,3 +28,4 @@ PromptSchema.methods.getUpdatedAt = function() {
 };
 
 module.exports = mongoose.model('Prompt', PromptSchema);
+

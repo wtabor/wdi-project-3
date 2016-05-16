@@ -21,3 +21,4 @@ UserSchema.methods.isValidPassword = function(password) {
 };
 
 module.exports = mongoose.model('User', UserSchema);
+

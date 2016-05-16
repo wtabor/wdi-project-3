@@ -29,3 +29,4 @@ StorySchema.methods.getUpdatedAt = function() {
 };
 
 module.exports = mongoose.model('Story', StorySchema);
+

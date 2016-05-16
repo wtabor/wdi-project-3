@@ -1,5 +1,6 @@
 //=================================================
-//GLOBAL
+// GLOBAL
+// wdi-project-3 app.js
 //=================================================
 var express        = require('express');
 var path           = require('path');
@@ -14,7 +15,7 @@ var session        = require('express-session');
 var flash          = require('connect-flash');
 
 //=================================================
-//ROUTES
+// ROUTES
 //=================================================
 var homeRouter    = require('./routes/index');
 var usersRouter   = require('./routes/users');
@@ -24,12 +25,14 @@ var storiesRouter = require('./routes/stories');
 var app = express();
 
 //=================================================
-//CONNECT TO DATABASE
+// CONNECT TO DATABASE
 //=================================================
 mongoose.connect('mongodb://localhost/prompts');
 
+
+
 //=================================================
-//VIEW ENGINE SETUP
+// VIEW ENGINE SETUP
 //=================================================
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
