@@ -2,6 +2,9 @@ var localSignupStrategy = require('./local-signup-strategy');
 var localLoginStrategy  = require('./local-login-strategy');
 var User                = require('../../models/user');
 
+//=================================================
+//PASSPORT CONFIG
+//=================================================
 var passportConfig = function(passport) {
 
   // Strategies
@@ -21,3 +24,4 @@ var passportConfig = function(passport) {
 };
 
 module.exports = passportConfig;
+
