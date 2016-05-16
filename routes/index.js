@@ -23,6 +23,12 @@ router.post('/signup', function(req, res, next) {
     return signUpStrategy(req, res, next);
 });
 
+// GET /about
+router.get('/about', function(req, res, next) {
+    res.render('about.ejs', { message: req.flash() });
+});
+
+
 // GET /login
 router.get('/login', function(req, res, next) {
     res.render('login.ejs', { message: req.flash() });
