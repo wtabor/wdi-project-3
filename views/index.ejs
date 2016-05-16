@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% include partials/head %>
   </head>
 
-  <body>
+  <body  class="container-fluid">
   	<header>
-    	<% include ../partials/header %>
+    	<% include partials/header %>
   	</header>
 
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
 
     <footer>
-    	<% include ../partials/footer %>
+    	<% include partials/footer %>
   	</footer>
   </body>
 </html>
