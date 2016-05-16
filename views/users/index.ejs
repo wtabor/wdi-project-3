@@ -16,7 +16,7 @@
         <h4>
           <form method="POST" action="/prompts/<%= prompt._id %>?_method=DELETE">
             <a href="/prompts/<%= prompt._id %>">
-              <%= todo.title + ' - ' + todo.completed %>
+              <%= prompt.promptTheme + ' - ' + prompt.promptText %>
             </a>
             <button type="submit" class="btn btn-xs btn-danger">Delete</button>
           </form>
