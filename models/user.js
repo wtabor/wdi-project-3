@@ -4,6 +4,7 @@ var Prompt   = require('./prompt');
 var Story    = require('./story');
 
 
+
 /// Schema configuration
 var UserSchema = new mongoose.Schema({
     local: {
