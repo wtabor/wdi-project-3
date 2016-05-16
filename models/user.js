@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var bcrypt   = require('bcrypt-nodejs');
-// var Prompt   = require('./prompt');
-// var Story    = require('./story');
+var Prompt   = require('./prompt');
+var Story    = require('./story');
 
 
 /// Schema configuration
@@ -11,14 +11,10 @@ var UserSchema = new mongoose.Schema({
         email: String,
         password: String
     },
-    // prompts: [Prompt.schema]
-    // stories: [Story.schema]
+     prompts: [Prompt.schema],
+     stories: [Story.schema]
 });
-//// programing notes: we should use penName not email as the login id, 
 
-
-
-///
 UserSchema.methods.encrypt = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8));
 };

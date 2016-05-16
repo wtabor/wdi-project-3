@@ -1,6 +1,4 @@
 var mongoose = require('mongoose');
-// var User    = require('./user');
-
 
 /// Schema configuration
 var PromptSchema = new mongoose.Schema({

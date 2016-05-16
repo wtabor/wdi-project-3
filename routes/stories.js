@@ -2,8 +2,7 @@
 
 var express = require('express');
 var router = express.Router();
-
-var Prompt = require('../models/prompt');
+var story = require('../models/story');
 
 function makeError(res, message, status) {
     res.statusCode = status;
@@ -25,39 +24,39 @@ function authenticate(req, res, next) {
 
 // INDEX
 router.get('/', authenticate, function(req, res, next) {
-    var prompt = global.currentUser.prompts;
-    res.render('prompts/index', { prompts: prompts, message: req.flash() });
+    var story = global.currentUser.stories;
+    res.render('stories/index', { stories: stories, message: req.flash() });
 });
 
 // NEW
 router.get('/new', authenticate, function(req, res, next) {
-    var prompt = {
-        promptTheme: '',
-        promptText: ''
+    var story = {
+        storyTheme: '',
+        storyText: ''
 
     };
-    res.render('prompts/new', { prompt: prompt, message: req.flash() });
+    res.render('stories/new', { story: story, message: req.flash() });
 });
 
 // SHOW
 router.get('/:id', authenticate, function(req, res, next) {
-    var prompt = currentUser.prompts.id(req.params.id);
-    if (!prompt) return next(makeError(res, 'Document not found', 404));
-    res.render('prompts/show', { prompt: prompt, message: req.flash() });
+    var story = currentUser.stories.id(req.params.id);
+    if (!story) return next(makeError(res, 'Document not found', 404));
+    res.render('stories/show', { story: story, message: req.flash() });
 });
 
 // CREATE
 router.post('/', authenticate, function(req, res, next) {
-    var prompt = {
-        promptTheme: req.body.promptTheme,
-        promptText: req.body.promptText
+    var story = {
+        storyTheme: req.body.storyTheme,
+        storyText: req.body.storyText
     };
-    // Since a user's prompts are an embedded document, we just need to push a new
-    // prompt to the user's list of prompts and save the user.
-    currentUser.prompts.push(prompt);
+    // Since a user's stories are an embedded document, we just need to push a new
+    // story to the user's list of stories and save the user.
+    currentUser.stories.push(story);
     currentUser.save()
         .then(function() {
-            res.redirect('/prompts');
+            res.redirect('/stories');
         }, function(err) {
             return next(err);
         });
@@ -65,20 +64,20 @@ router.post('/', authenticate, function(req, res, next) {
 
 // EDIT
 router.get('/:id/edit', authenticate, function(req, res, next) {
-    var prompt = currentUser.prompts.id(req.params.id);
-    if (!prompt) return next(makeError(res, 'Document not found', 404));
-    res.render('prompt/edit', { prompt: prompt, message: req.flash() });
+    var story = currentUser.stories.id(req.params.id);
+    if (!story) return next(makeError(res, 'Document not found', 404));
+    res.render('story/edit', { story: story, message: req.flash() });
 });
 
 // UPDATE
 router.put('/:id', authenticate, function(req, res, next) {
-    var prompt = currentUser.prompts.id(req.params.id);
-    if (!prompt) return next(makeError(res, 'Document not found', 404));
+    var story = currentUser.stories.id(req.params.id);
+    if (!story) return next(makeError(res, 'Document not found', 404));
     else {
-        prompt.promptTheme = req.body.promptTheme;
+        story.storyTheme = req.body.storyTheme;
         currentUser.save()
             .then(function(saved) {
-                res.redirect('/prompts');
+                res.redirect('/stories');
             }, function(err) {
                 return next(err);
             });
@@ -87,13 +86,13 @@ router.put('/:id', authenticate, function(req, res, next) {
 
 // DESTROY
 router.delete('/:id', authenticate, function(req, res, next) {
-    var prompt = currentUser.prompts.id(req.params.id);
-    if (!prompt) return next(makeError(res, 'Document not found', 404));
-    var index = currentUser.prompts.indexOf(prompt);
-    currentUser.prompts.splice(index, 1);
+    var story = currentUser.stories.id(req.params.id);
+    if (!story) return next(makeError(res, 'Document not found', 404));
+    var index = currentUser.stories.indexOf(story);
+    currentUser.stories.splice(index, 1);
     currentUser.save()
         .then(function(saved) {
-            res.redirect('/prompts');
+            res.redirect('/stories');
         }, function(err) {
             return next(err);
         });

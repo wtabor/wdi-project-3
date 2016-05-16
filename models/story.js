@@ -1,13 +1,11 @@
 var mongoose = require('mongoose');
-var User   = require('./user');
-var Prompt    = require('./prompt');
 
 /// Schema configuration
 var StorySchema = new mongoose.Schema({
-    // user_id:   { type: String, required: true },
-    // prompt_id: { type: String, required: true },
-    storyText: { type: String, required: true, maxLength: 2000 },
-    storyHook: { type: String, required: true }
+        // user_id:   { type: String, required: true },
+        // prompt_id: { type: String, required: true },
+        storyText: { type: String, required: true, maxLength: 2000 },
+        storyHook: { type: String, required: true }
     }, { timestamps: true } // createdAt, updatedAt
 );
 
@@ -38,4 +36,3 @@ StorySchema.methods.getUpdatedAt = function() {
 
 
 module.exports = mongoose.model('Story', StorySchema);
-
