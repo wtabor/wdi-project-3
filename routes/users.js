@@ -3,11 +3,6 @@ var router = express.Router();
 
 var User = require('../models/user');
 
-// GET users
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-
 //=================================================
 //AUTHENTICATION
 //=================================================
