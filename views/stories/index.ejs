@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body class="container-fluid">
+  <header>
+    <% include ../partials/header %>
+  </header>
+
+  <main>
+    <div>
+      <h3>Stories:</h3>
+      <% stories.forEach(function(story) { %>
+        <h4>
+          <form method="POST" action="/stories/<%= story._id %>?_method=DELETE">
+            <a href="/stories/<%= story._id %>">
+              <%= story.storyHook + ' - ' + story.storyText %>
+            </a>
+            <button type="submit" class="btn btn-xs btn-danger">Delete</button>
+          </form>
+        </h4>
+      <% }) %>
+    </div>
+    <a href="/stories/new" class="btn btn-primary">New</a>
+  </main>
+
+  <footer>
+    <% include ../partials/footer %>
+  </footer>
+</body>
+</html>
