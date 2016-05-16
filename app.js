@@ -26,7 +26,7 @@ var app = express();
 //=================================================
 //CONNECT TO DATABASE
 //=================================================
-
+mongoose.connect('mongodb://localhost/prompts');
 
 //=================================================
 //VIEW ENGINE SETUP
@@ -37,7 +37,7 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 //=================================================
-//USE SECTION
+//APP.USE SECTION
 //=================================================
 app.use(logger('combined')); //possibly switch to 'dev'
 app.use(bodyParser.json());
@@ -49,7 +49,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //=================================================
 //PASSPORT SESSION
 //=================================================
-app.use(session({ secret: 'WDI Rocks!',
+app.use(session({ secret: 'test',
                   resave: true,
                   saveUninitialized: true }));
 app.use(passport.initialize());
@@ -58,20 +58,39 @@ app.use(flash());
 
 require('./config/passport/passport')(passport);
 
-app.use('/', routes);
-app.use('/users', users);
+//=================================================
+//MIDDLEWARE CURRENTUSER
+//=================================================
+app.use(function (req, res, next) {
+  global.currentUser = req.user;
+  next();
+});
 
-// catch 404 and forward to error handler
+//=================================================
+//ROUTES
+//=================================================
+app.use('/', homeRouter);
+app.use('/users', usersRouter);
+app.use('/prompts', promptsRouter);
+app.use('/stories', storiesRouter);
+
+
+//=================================================
+//CATCH 404, FORWARD TO ERROR HANDLER
+//=================================================
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
-// error handlers
+//=================================================
+//ERROR HANDLERS
+//=================================================
 
-// development error handler
-// will print stacktrace
+
+//Development event handler
+//Will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
@@ -82,8 +101,9 @@ if (app.get('env') === 'development') {
   });
 }
 
-// production error handler
-// no stacktraces leaked to user
+
+//Production event handler
+//No stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
@@ -92,5 +112,6 @@ app.use(function(err, req, res, next) {
   });
 });
 
+console.log('You are in: %s mode', app.get('env'));
 
 module.exports = app;
