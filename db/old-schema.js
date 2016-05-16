@@ -4,12 +4,12 @@ var db = mongoose.connection;
 
 
 ///
-db.on('error', function(err){
-  console.log(err);
+db.on('error', function(err) {
+    console.log(err);
 });
 
 db.once('open', function() {
-  console.log("Connected to MongoDB!");
+    console.log("Connected to MongoDB!");
 });
 ///
 
@@ -20,22 +20,22 @@ var Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId
 
 var userSchema = new Schema({
-  penName: String,
-  email: String,
-  password: String
+    penName: String,
+    email: String,
+    password: String
 });
 
 var promptSchema = new Schema({
-  user_id: String,
-  promptTheme: String,
-  promptText: String
+    user_id: String,
+    promptTheme: String,
+    promptText: String
 });
 
 var storySchema = new Schema({
-  prompt_id: String,
-  user_id: String,
-  storyText: String,
-  storyHook: String
+    prompt_id: String,
+    user_id: String,
+    storyText: String,
+    storyHook: String
 });
 
 // /// embed ReminderSchema into AuthorSchema
@@ -43,7 +43,7 @@ var storySchema = new Schema({
 //   name: String,
 //   reminders: [ReminderSchema]
 // });
-/// example of how to embed 
+/// example of how to embed
 
 
 
@@ -56,8 +56,8 @@ var storyModel = mongoose.model("Story", storySchema);
 
 
 /// standard module.exports
-module.exports ={
-  UserModel: UserModel,
-  PromptModel: PromptModel,
-  StoryModel: StoryModel
+module.exports = {
+    UserModel: UserModel,
+    PromptModel: PromptModel,
+    StoryModel: StoryModel
 };
