@@ -1,12 +1,20 @@
 var mongoose = require('mongoose');
+var User   = require('./user');
+var Prompt    = require('./prompt');
 
+/// Schema configuration
 var StorySchema = new mongoose.Schema({
-        story_text: { type: String, required: true, maxLength: 2000 }
+    // user_id:   { type: String, required: true },
+    // prompt_id: { type: String, required: true },
+    storyText: { type: String, required: true, maxLength: 2000 },
+    storyHook: { type: String, required: true }
     }, { timestamps: true } // createdAt, updatedAt
 );
 
-var maxlength = [9, 'Your story `{story_text}` (`{VALUE}`) exceeds the maximum allowed length ({MAXLENGTH}).'];
+var maxlength = [9, 'Your story `{storyText}` (`{VALUE}`) exceeds the maximum allowed length ({MAXLENGTH}).'];
 
+
+///
 function date2String(date) {
     var options = {
         weekday: 'long',
@@ -27,6 +35,7 @@ StorySchema.methods.getCreatedAt = function() {
 StorySchema.methods.getUpdatedAt = function() {
     return date2String(this.updatedAt);
 };
+
 
 module.exports = mongoose.model('Story', StorySchema);
 

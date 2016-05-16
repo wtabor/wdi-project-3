@@ -1,11 +1,18 @@
 var mongoose = require('mongoose');
+// var User    = require('./user');
 
+
+/// Schema configuration
 var PromptSchema = new mongoose.Schema({
-        hook: { type: String, required: true },
-        theme: { type: String, required: true }
+        // user_id:   { type: String, required: true },
+        promptTheme: { type: String, required: true },
+        promptText: { type: String, required: true }
     }, { timestamps: true } // createdAt, updatedAt
 );
 
+
+
+///
 function date2String(date) {
     var options = {
         weekday: 'long',
@@ -27,5 +34,5 @@ PromptSchema.methods.getUpdatedAt = function() {
     return date2String(this.updatedAt);
 };
 
-module.exports = mongoose.model('Prompt', PromptSchema);
 
+module.exports = mongoose.model('Prompt', PromptSchema);

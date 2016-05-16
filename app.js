@@ -27,7 +27,7 @@ var app = express();
 //=================================================
 // CONNECT TO DATABASE
 //=================================================
-mongoose.connect('mongodb://localhost/prompts');
+mongoose.connect('mongodb://localhost/promptsDB');
 
 
 
@@ -87,10 +87,10 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+
 //=================================================
 //ERROR HANDLERS
 //=================================================
-
 
 //Development event handler
 //Will print stacktrace

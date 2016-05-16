@@ -19,9 +19,9 @@ StoryModel.remove({}, function(err){
 
 
 ////// Create some users
-var carl = new UserModel({name: "carl"})
-var will = new UserModel({name: "will"})
-var michael = new UserModel({name: "michael"})
+var carl = new UserModel({penName: "carl", email: "carl@example.com"})
+var will  = new UserModel({penName: "will"})
+var michael = new UserModel({penName: "michael"})
 
 var prompt1 = new PromptModel({body: "story prompt 1"})
 var prompt2 = new PromptModel({body: "story prompt 2"})
