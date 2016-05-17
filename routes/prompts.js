@@ -38,7 +38,9 @@ router.get('/:id', authenticate, function(req, res, next) {
         .then(function(prompts) {
             console.log('test1: prompts = ', prompts);
             res.render('prompts/show', { prompts: prompts, message: req.flash() });
-        });
+        }, function(err) {
+        return next(err);
+    });
 });
 
 // CREATE
@@ -60,9 +62,16 @@ router.post('/', authenticate, function(req, res, next) {
 
 // EDIT
 router.get('/:id/edit', authenticate, function(req, res, next) {
-    var prompt = currentUser.prompts.id(req.params.id);
-    if (!prompt) return next(makeError(res, 'Document not found', 404));
-    res.render('prompt/edit', { prompt: prompt, message: req.flash() });
+    // var prompt = currentUser.prompts.id(req.params.id);
+    // if (!prompt) return next(makeError(res, 'Document not found', 404));
+    // res.render('prompt/edit', { prompt: prompt, message: req.flash() });
+    Prompt.find({ user: global.currentUser })
+        .then(function(prompts) {
+            console.log('test1: prompts = ', prompts);
+            res.render('prompts/edit', { prompts: prompts, message: req.flash() });
+        }, function(err) {
+        return next(err);
+    });
 });
 
 // UPDATE
