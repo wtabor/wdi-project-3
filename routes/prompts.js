@@ -88,16 +88,12 @@ router.put('/:id', authenticate, function(req, res, next) {
 
 // DESTROY
 router.delete('/:id', authenticate, function(req, res, next) {
-    var prompt = currentUser.prompts.id(req.params.id);
-    if (!prompt) return next(makeError(res, 'Document not found', 404));
-    var index = currentUser.prompts.indexOf(prompt);
-    currentUser.prompts.splice(index, 1);
-    currentUser.save()
-        .then(function(saved) {
-            res.redirect('/prompts/index');
-        }, function(err) {
-            return next(err);
-        });
+    Prompt.findByIdAndRemove(req.params.id)
+      .then(function() {
+        res.redirect('/prompts/index');
+      }, function(err) {
+        return next(err);
+      });
 });
 
 module.exports = router;

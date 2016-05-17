@@ -42,7 +42,8 @@ router.get('/new', authenticate, function(req, res, next) {
 
 // SHOW
 router.get('/:id', authenticate, function(req, res, next) {
-    Story.find({ user: global.currentUser })
+    console.log('test2: stories');
+    Story.findById(req.params.id)
         .then(function(stories) {
             res.render('stories/show', { stories: stories, message: req.flash() });
         });
@@ -50,6 +51,7 @@ router.get('/:id', authenticate, function(req, res, next) {
 
 // CREATE
 router.post('/', authenticate, function(req, res, next) {
+
     console.log('req.query:', req.query);
     Prompt.findById(req.query.prompt)
         .then(function(prompt) {
@@ -70,24 +72,6 @@ router.post('/', authenticate, function(req, res, next) {
                 });
         });
 });
-
-//     Prompt.findById(req.query.prompt)
-//         .then(function(prompt) {
-//             var story = new Story({
-//                 user: global.currentUser,
-//                 prompt: prompt,
-//                 storyText: req.body.storyText,
-//                 storyHook: req.body.storyHook
-//             });
-//             story.save()
-//                 .then(function(saved) {
-//                     res.redirect('/');
-//                 }, function(err) {
-//                     return next(err);
-//                 });
-//         });
-
-// });
 
 // EDIT
 router.get('/:id/edit', authenticate, function(req, res, next) {
@@ -113,16 +97,12 @@ router.put('/:id', authenticate, function(req, res, next) {
 
 // DESTROY
 router.delete('/:id', authenticate, function(req, res, next) {
-    var story = currentUser.stories.id(req.params.id);
-    if (!story) return next(makeError(res, 'Document not found', 404));
-    var index = currentUser.stories.indexOf(story);
-    currentUser.stories.splice(index, 1);
-    currentUser.save()
-        .then(function(saved) {
-            res.redirect('/stories');
-        }, function(err) {
-            return next(err);
-        });
+    Story.findByIdAndRemove(req.params.id)
+      .then(function() {
+        res.redirect('/stories/index');
+      }, function(err) {
+        return next(err);
+      });
 });
 
 module.exports = router;

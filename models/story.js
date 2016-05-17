@@ -4,7 +4,7 @@ var ObjectId = mongoose.Schema.ObjectId;
 /// Schema configuration
 var StorySchema = new mongoose.Schema({
         user:   { type: ObjectId, required: true },
-        prompt: { type: ObjectId, required: true },
+        prompt: { type: ObjectId, required: false },
         storyText: { type: String, required: true, maxLength: 2000 },
         storyHook: { type: String, required: true }
     }, { timestamps: true } // createdAt, updatedAt

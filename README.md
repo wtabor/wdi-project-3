@@ -1,12 +1,71 @@
-
 # Welcome to Project 3!
 
+TODO: Write a project description
+
+A simple kick-the-tires sample web application that demostrates use of NodeJS, ExpressJS and MongoDB built in one 5-day week as our team-based project 3 for WDI students at General Assembly ~ Atlanta in May 2016.
+
 #### Your outlet for creative writing!
+The sample app is a Create Writing site, where a user can find or write a writing Prompt, and then write a Story from the Prompt, while securely used CRUD (Create, Read, Update, and Delete) operations because of the Authentication and Authorization features from Passport, authentication middleware for Node.js.
+
+
+## Installation
+
+TODO: Describe the installation process
+
+**STEPS for Installing**
+
+1. `git clone URL`
+2. Issue the CD command into the directory
+3. `npm install`
+4. `nodemon start`
+5. and launch your browser to http://localhost:3000/
+
+The live app lives over on our production Heroku server at: *<URL-link>*
+
+
+
+## Usage
+
+TODO: Write usage instructions
+
+With the browser window open, navagate to the homepage at /
+
+The user can signup, login, create a prompt and then write a story and logout.
+
+
+## Contributing
+- Will Tabor
+- Michael Gokey
+- Carl Onsgard
+
+
+
+## History
+
+TODO: Write history
+
+We wrote lots of sample routes, and tried embedding stories in prompts and prompts in users, much like a sample ToDo app might, but found we needed to Link, rather then embed our data. We had lots of samples and false turns to go down in the first 2 days.
 
 ### Version
 1.0
 
-[Heroku]
+## Credits
+
+TODO: Write credits
+
+
+## License
+
+This project is licensed under the open-source public-domain MIT License.
+
+
+
+
+
+
+
+
+----------
 
 ### Minimum Requirements
  [General Assembly] rubric
@@ -22,22 +81,19 @@
 
 
 ### Planning
-[Trello]
+Our [Trello](https://trello.com/b/jOxDUXPN/project-3 "Our Trello board") board
 
-Wireframe Home: ![alt-text][Wireframe]
+Our [Wireframes] page
 
-Wireframe Post: ![alt-text][Wireframe2]
+Our ERD diagram (embeded here)
 
-Wireframe Sign In: ![alt-text][Wireframe3]
-
-Wireframe Sign Up: ![alt-text][Wireframe4]
-
-ERD: ![alt-text][Wireframe5]
+### User Stories
+[Link to User Stories Readme file]
 
 ###Models
-  -User Model
-  -Prompt Model
-  -Story Model
+-   User Model
+-   Prompt Model
+-   Story Model
 
 ###Features
   - Log in/Log out
@@ -47,72 +103,45 @@ ERD: ![alt-text][Wireframe5]
   - Full CRUD with hidden editing
 
 ###Technologies
-  - MongoDB
-  - Express
-  - Node.js
-  - HTML
-  - CSS
+- HTML5
+- CSS3
+- Node.JS
+  - Express.JS
+  - debug
+  - morgan
+  - ejs
+  - body-parser
+  - passport
+  - bcrypt-nodejs
+  - cookie-parser
+  - connect-flash
+  - method-override
+  - mongoose
+- MongoDB
+
+
+Trying not use Bootstrap?
 
 
 
 
-### User Stories
-As a *Writer*
+#### Define Variables
+Placeholder for defining our variables
 
-I want to *find new prompts*
-
-to *practice my creative writing*
-
-As a *User*
-
-I want to *be able to upvote and downvote*
-
-As a *Reader*
-
-I want *links to click through properly*
-
-without *needing to hit multiple buttons*
-
-As a *User not signed in*
-
-I want to *be able to view, even if I can't comment*
-
-As a *User*
-
-I want to *Sign in and edit my posts*
-
-
-
-* Define Variables
-
-
+Do we need this?
 
 
 ### Todos
 
+Things left for other iterative build cycles;
 
+- Stuff
+- Stuff
+- Create an API
+- Consume and API
+- Add a Twitter feed to different Prompt Theme pages
+- Stuff
 
-License
-----
-
-MIT
-
-
-
-
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
-
-   [Heroku]: </>
-   [General Assembly]: <https://github.com/ATL-WDI-Exercises/project-three-requirements>
-   [dill]: <https://github.com/joemccann/dillinger>
-   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
-   [jQuery]: <http://jquery.com>
-   [Trello]: <https://trello.com/b/jOxDUXPN>
-   [Wireframe]: https://github.com/wtabor/angler/blob/master/app/assets/images/Home.png "Wireframe"
-   [Wireframe2]: https://github.com/wtabor/angler/blob/master/app/assets/images/Post.png "Wireframe2"
-   [Wireframe3]: https://github.com/wtabor/angler/blob/master/app/assets/images/Sign_In.png "Wireframe3"
-   [Wireframe4]: https://github.com/wtabor/angler/blob/master/app/assets/images/Sign_Up.png "Wireframe4"
-   [Wireframe5]: https://github.com/wtabor/angler/blob/master/app/assets/images/New_Mockup_2.png "Wireframe5"
 
 
 
