@@ -12,13 +12,12 @@
   <main>
     <div>
       <h3>SHOW</h3>
-      <p><b>Title: </b><%= prompt.title %></p>
-      <p><b>ID: </b><%= prompt._id %></p>
-      <p><b>Completed: </b><%= prompt.completed %></p>
+      <p><b>Title: </b><%= user.email %></p>
+      <p><b>ID: </b><%= user._id %></p>
     </div>
 
-    <a href="/prompts" class="btn btn-primary">Back</a>
-    <a href="/prompts/<%= todo._id %>/edit" class="btn btn-danger">Edit</a>
+    <a href="/" class="btn btn-primary">Back</a>
+    <a href="/prompts/<%= user._id %>/edit" class="btn btn-danger">Edit</a>
   </main>
 
   <footer>

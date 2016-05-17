@@ -10,3 +10,13 @@ function authenticate(req, res, next) {
 }
 
 module.exports = authenticate;
+
+
+
+function authorize(req, res, next) {
+  if (currentUser) {
+    next();
+  } else {
+    res.redirect('/');
+  }
+}

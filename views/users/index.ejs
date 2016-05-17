@@ -10,20 +10,7 @@
   </header>
 
   <main>
-    <div>
-      <h3>Prompts:</h3>
-      <% prompts.forEach(function(prompt) { %>
-        <h4>
-          <form method="POST" action="/prompts/<%= prompt._id %>?_method=DELETE">
-            <a href="/prompts/<%= prompt._id %>">
-              <%= prompt.promptTheme + ' - ' + prompt.promptText %>
-            </a>
-            <button type="submit" class="btn btn-xs btn-danger">Delete</button>
-          </form>
-        </h4>
-      <% }) %>
-    </div>
-    <a href="/prompts/new" class="btn btn-primary">New</a>
+    <p> Hey Guys!</p>
   </main>
 
   <footer>
