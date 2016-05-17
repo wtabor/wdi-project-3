@@ -8,8 +8,6 @@ var User = require('../models/user');
 router.get('/index', authenticate, function(req, res, next) {
     var myuser = global.currentUser.user;
     res.render('users/index', { users: myuser, message: req.flash() });
-
-    console.log("test1");
 });
 
 
