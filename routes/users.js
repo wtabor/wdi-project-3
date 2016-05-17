@@ -1,18 +1,8 @@
 var express = require('express');
 var router = express.Router();
-
+var authenticate = require('./authenticate');
 var User = require('../models/user');
 
-//=================================================
-//AUTHENTICATION
-//=================================================
-function authenticate(req, res, next) {
-    if (!req.isAuthenticated()) {
-        res.redirect('/');
-    } else {
-        next();
-    }
-}
 
 // INDEX
 router.get('/', authenticate, function(req, res, next) {

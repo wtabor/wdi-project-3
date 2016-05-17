@@ -3,6 +3,7 @@
 var express = require('express');
 var router = express.Router();
 var story = require('../models/story');
+var authenticate = require('./authenticate');
 
 function makeError(res, message, status) {
     res.statusCode = status;
@@ -11,20 +12,9 @@ function makeError(res, message, status) {
     return error;
 }
 
-//=================================================
-//AUTHENTICATION
-//=================================================
-function authenticate(req, res, next) {
-    if (!req.isAuthenticated()) {
-        res.redirect('/');
-    } else {
-        next();
-    }
-}
-
 // INDEX
 router.get('/', authenticate, function(req, res, next) {
-    var story = global.currentUser.stories;
+    var stories = global.currentUser.stories;
     res.render('stories/index', { stories: stories, message: req.flash() });
 });
 
@@ -48,9 +38,12 @@ router.get('/:id', authenticate, function(req, res, next) {
 // CREATE
 router.post('/', authenticate, function(req, res, next) {
     var story = {
-        storyTheme: req.body.storyTheme,
+        storyHook: req.body.storyHook,
         storyText: req.body.storyText
     };
+    console.log("story = ", story);
+
+
     // Since a user's stories are an embedded document, we just need to push a new
     // story to the user's list of stories and save the user.
     currentUser.stories.push(story);

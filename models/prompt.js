@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
+var ObjectId = mongoose.Schema.ObjectId;
 
 /// Schema configuration
 var PromptSchema = new mongoose.Schema({
-        // user_id:   { type: String, required: true },
+        user: { type: ObjectId, required: true, },
         promptTheme: { type: String, required: true },
         promptText: { type: String, required: true }
     }, { timestamps: true } // createdAt, updatedAt

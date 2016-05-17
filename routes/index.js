@@ -4,7 +4,7 @@ var passport = require('passport');
 
 // GET Homepage
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express', message: req.flash() }); // add the message
+    res.render('index', { title: '', message: req.flash() }); // add the message
 });
 
 // GET /signup
@@ -37,7 +37,7 @@ router.get('/login', function(req, res, next) {
 // POST /login
 router.post('/login', function(req, res, next) {
     var loginProperty = passport.authenticate('local-login', {
-        successRedirect: '/index',
+        successRedirect: '/',
         failureRedirect: '/login',
         failureFlash: true
     });

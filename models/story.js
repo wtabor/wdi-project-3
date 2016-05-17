@@ -1,18 +1,15 @@
 var mongoose = require('mongoose');
+var ObjectId = mongoose.Schema.ObjectId;
 
 /// Schema configuration
 var StorySchema = new mongoose.Schema({
-        // user_id:   { type: String, required: true },
-        // prompt_id: { type: String, required: true },
+        user:   { type: ObjectId, required: true },
+        prompt: { type: ObjectId, required: true },
         storyText: { type: String, required: true, maxLength: 2000 },
         storyHook: { type: String, required: true }
     }, { timestamps: true } // createdAt, updatedAt
 );
 
-var maxlength = [9, 'Your story `{storyText}` (`{VALUE}`) exceeds the maximum allowed length ({MAXLENGTH}).'];
-
-
-///
 function date2String(date) {
     var options = {
         weekday: 'long',

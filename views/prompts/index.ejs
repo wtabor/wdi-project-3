@@ -14,7 +14,7 @@
       <h3>Prompts:</h3>
       <% prompts.forEach(function(prompt) { %>
         <h4>
-          <form method="POST" action="/todos/<%= prompt._id %>?_method=DELETE">
+          <form method="POST" action="/prompts/<%= prompt._id %>?_method=DELETE">
             <a href="/prompts/<%= prompt._id %>">
               <%= prompt.promptTheme + ' - ' + prompt.promptText %>
             </a>
