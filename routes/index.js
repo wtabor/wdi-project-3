@@ -4,12 +4,14 @@ var passport = require('passport');
 
 // GET Homepage
 router.get('/', function(req, res, next) {
-    res.render('index', { title: '', message: req.flash() }); // add the message
+    var myTitle = "Welcome-m";
+    res.render('index', { title: myTitle, message: req.flash() }); // add the message
 });
 
 // GET /signup
 router.get('/signup', function(req, res, next) {
-    res.render('signup.ejs', { message: req.flash() });
+    var myTitle = "Signup-m";
+    res.render('signup.ejs', { title: myTitle, message: req.flash() });
 });
 
 // POST /signup
@@ -19,19 +21,20 @@ router.post('/signup', function(req, res, next) {
         failureRedirect: '/signup',
         failureFlash: true
     });
-
     return signUpStrategy(req, res, next);
 });
 
 // GET /about
 router.get('/about', function(req, res, next) {
-    res.render('about.ejs', { message: req.flash() });
+    var myTitle = "About-m";
+    res.render('about.ejs', {title: myTitle, message: req.flash() });
 });
 
 
 // GET /login
 router.get('/login', function(req, res, next) {
-    res.render('login.ejs', { message: req.flash() });
+    var myTitle = "Login-m";
+    res.render('login.ejs', {title: myTitle, message: req.flash() });
 });
 
 // POST /login
@@ -41,7 +44,6 @@ router.post('/login', function(req, res, next) {
         failureRedirect: '/login',
         failureFlash: true
     });
-
     return loginProperty(req, res, next);
 });
 
