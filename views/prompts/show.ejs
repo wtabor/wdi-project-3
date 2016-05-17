@@ -10,7 +10,9 @@
   </header>
 
   <main>
-   <p> Yo what up fools </p>
+   <p> Theme: <%= prompt.promptTheme %></p>
+   <p> Text: <%= prompt.promptText %></p>
+   <a href="/stories/new?prompt=<%= prompt._id %>" class="btn btn-primary">New Story</a>
   </main>
 
   <footer>

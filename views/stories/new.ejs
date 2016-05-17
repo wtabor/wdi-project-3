@@ -11,6 +11,9 @@
 
   <main>
     <h3>NEW</h3>
+    <p>Please create a story for the prompt:
+    <p>Theme: <%= prompt.promptTheme %></p>
+    <p>Text:  <%= prompt.promptText %></p>
     <form class="story-form" action="/stories" method="post">
       <% include _form %>
       <a href="/stories" class="btn btn-primary">Back</a>

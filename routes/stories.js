@@ -2,6 +2,7 @@
 
 var express = require('express');
 var router = express.Router();
+var Prompt = require('../models/prompt');
 var Story = require('../models/story');
 var authenticate = require('./authenticate');
 
@@ -25,12 +26,19 @@ router.get('/index', authenticate, function(req, res, next) {
 
 // NEW
 router.get('/new', authenticate, function(req, res, next) {
-    var story = {
-        storyText: '',
-        storyHook: ''
+    console.log('req.query:', req.query);
+    Prompt.findById(req.query.prompt)
+    .then(function(prompt) {
+        console.log('prompt:', prompt);
+        var story = {
+            user: global.currentUser,
+            prompt: prompt,
+            storyText: '',
+            storyHook: ''
+        };
+        res.render('stories/new', { story: story, prompt: prompt, message: req.flash() });
+    });
 
-    };
-    res.render('stories/new', { story: story, message: req.flash() });
 });
 
 // SHOW

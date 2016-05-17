@@ -26,6 +26,7 @@ router.get('/new', authenticate, function(req, res, next) {
         promptTheme: '',
         promptText: ''
     };
+
     res.render('prompts/new', { prompt: prompt, message: req.flash() });
 });
 
@@ -34,10 +35,10 @@ router.get('/:id', authenticate, function(req, res, next) {
     // var prompt = currentUser.prompts.id(req.params.id);
     // if (!prompt) return next(makeError(res, 'Document not found', 404));
     // res.render('prompts/show', { prompt: prompt, message: req.flash() });
-    Prompt.find({ user: global.currentUser })
-        .then(function(prompts) {
-            console.log('test1: prompts = ', prompts);
-            res.render('prompts/show', { prompts: prompts, message: req.flash() });
+    Prompt.findById(req.params.id)
+        .then(function(prompt) {
+            console.log('prompt:', prompt);
+            res.render('prompts/show', { prompt: prompt, message: req.flash() });
         }, function(err) {
         return next(err);
     });
@@ -45,7 +46,6 @@ router.get('/:id', authenticate, function(req, res, next) {
 
 // CREATE
 router.post('/', authenticate, function(req, res, next) {
-    console.log('test1');
     var prompt = new Prompt ({
         user: global.currentUser,
         promptTheme: req.body.promptTheme,
@@ -67,7 +67,6 @@ router.get('/:id/edit', authenticate, function(req, res, next) {
     // res.render('prompt/edit', { prompt: prompt, message: req.flash() });
     Prompt.find({ user: global.currentUser })
         .then(function(prompts) {
-            console.log('test1: prompts = ', prompts);
             res.render('prompts/edit', { prompts: prompts, message: req.flash() });
         }, function(err) {
         return next(err);
