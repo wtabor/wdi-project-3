@@ -43,9 +43,9 @@ router.get('/new', authenticate, function(req, res, next) {
 
 // SHOW
 router.get('/:id', authenticate, function(req, res, next) {
-    Story.find({ user: global.currentUser })
+    console.log('test2: stories');
+    Story.findById(req.params.id)
         .then(function(stories) {
-            console.log('test1: stories = ', stories);
             res.render('stories/show', { stories: stories, message: req.flash() });
         });
 });
@@ -54,31 +54,16 @@ router.get('/:id', authenticate, function(req, res, next) {
 router.post('/', authenticate, function(req, res, next) {
     var story = new Story ({
         user: global.currentUser,
-        prompt: global.currentPrompt,
-        storyText: req.body.storyText,
-        storyHook: req.body.storyHook
+        prompt: Prompt._id,
+        storyHook: req.body.storyHook,
+        storyText: req.body.storyText
     });
-    console.log("test 5");
     story.save()
     .then(function(saved) {
-        console.log("test 6");
         res.redirect('/stories/index');
     }, function(err) {
         return next(err);
     });
-    console.log("story = ", story);
-
-
-    // Since a user's stories are an embedded document, we just need to push a new
-    // story to the user's list of stories and save the user.
-
-    // currentUser.stories.push(story);
-    // currentUser.save()
-    //     .then(function() {
-    //         res.redirect('/stories/index');
-    //     }, function(err) {
-    //         return next(err);
-    //     });
 });
 
 // EDIT
@@ -105,16 +90,12 @@ router.put('/:id', authenticate, function(req, res, next) {
 
 // DESTROY
 router.delete('/:id', authenticate, function(req, res, next) {
-    var story = currentUser.stories.id(req.params.id);
-    if (!story) return next(makeError(res, 'Document not found', 404));
-    var index = currentUser.stories.indexOf(story);
-    currentUser.stories.splice(index, 1);
-    currentUser.save()
-        .then(function(saved) {
-            res.redirect('/stories');
-        }, function(err) {
-            return next(err);
-        });
+    Story.findByIdAndRemove(req.params.id)
+      .then(function() {
+        res.redirect('/stories/index');
+      }, function(err) {
+        return next(err);
+      });
 });
 
 module.exports = router;
