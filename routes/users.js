@@ -5,16 +5,18 @@ var User = require('../models/user');
 
 
 // INDEX
-router.get('/', authenticate, function(req, res, next) {
-    var user = global.currentUser.users;
-    res.render('users/index', { users: users, message: req.flash() });
+router.get('/index', authenticate, function(req, res, next) {
+    var myuser = global.currentUser.user;
+    res.render('users/index', { users: myuser, message: req.flash() });
+
+    console.log("test1");
 });
 
 
 // SHOW
 router.get('/:id', authenticate, function(req, res, next) {
-    var user = currentUser.users.id(req.params.id);
-    if (!user) return next(makeError(res, 'Document not found', 404));
+    var user = global.currentUser.users.id(req.params.id);
+    if (!user) return next(makeError(res, 'Document Woot not found', 404));
     res.render('users/show', { user: user, message: req.flash() });
 });
 
