@@ -18,7 +18,7 @@ router.get('/:id', authenticate, function(req, res, next) {
     // res.render('users/show', { user: user, message: req.flash() });
     User.find({ user: global.currentUser })
         .then(function(users) {
-            console.log('test1: users = ', users);
+
             res.render('users/show', { users: users, message: req.flash() });
         });
 });
@@ -60,9 +60,3 @@ router.delete('/:id', authenticate, function(req, res, next) {
 });
 
 module.exports = router;
-
-
-
-
-
-

@@ -19,7 +19,6 @@ router.get('/index', authenticate, function(req, res, next) {
     // res.render('stories/index', { stories: stories, message: req.flash() });
     Story.find({ user: global.currentUser })
         .then(function(stories) {
-            console.log('test1: stories = ', stories);
             res.render('stories/index', { stories: stories, message: req.flash() });
         });
 });
@@ -28,16 +27,16 @@ router.get('/index', authenticate, function(req, res, next) {
 router.get('/new', authenticate, function(req, res, next) {
     console.log('req.query:', req.query);
     Prompt.findById(req.query.prompt)
-    .then(function(prompt) {
-        console.log('prompt:', prompt);
-        var story = {
-            user: global.currentUser,
-            prompt: prompt,
-            storyText: '',
-            storyHook: ''
-        };
-        res.render('stories/new', { story: story, prompt: prompt, message: req.flash() });
-    });
+        .then(function(prompt) {
+            console.log('prompt:', prompt);
+            var story = {
+                user: global.currentUser,
+                prompt: prompt,
+                storyText: '',
+                storyHook: ''
+            };
+            res.render('stories/new', { story: story, prompt: prompt, message: req.flash() });
+        });
 
 });
 
@@ -45,41 +44,50 @@ router.get('/new', authenticate, function(req, res, next) {
 router.get('/:id', authenticate, function(req, res, next) {
     Story.find({ user: global.currentUser })
         .then(function(stories) {
-            console.log('test1: stories = ', stories);
             res.render('stories/show', { stories: stories, message: req.flash() });
         });
 });
 
 // CREATE
 router.post('/', authenticate, function(req, res, next) {
-    var story = new Story ({
-        user: global.currentUser,
-        prompt: global.currentPrompt,
-        storyText: req.body.storyText,
-        storyHook: req.body.storyHook
-    });
-    console.log("test 5");
-    story.save()
-    .then(function(saved) {
-        console.log("test 6");
-        res.redirect('/stories/index');
-    }, function(err) {
-        return next(err);
-    });
-    console.log("story = ", story);
-
-
-    // Since a user's stories are an embedded document, we just need to push a new
-    // story to the user's list of stories and save the user.
-
-    // currentUser.stories.push(story);
-    // currentUser.save()
-    //     .then(function() {
-    //         res.redirect('/stories/index');
-    //     }, function(err) {
-    //         return next(err);
-    //     });
+    console.log('req.query:', req.query);
+    Prompt.findById(req.query.prompt)
+        .then(function(prompt) {
+            console.log('prompt:', prompt);
+            var story = new Story({
+                user: global.currentUser,
+                prompt: req.body.prompt,
+                storyHook: req.body.storyHook,
+                storyText: req.body.storyText
+            });
+            console.log('about to save story:', story);
+            story.save()
+                .then(function() {
+                    res.redirect('/');
+                    console.log("saved")
+                }, function(err) {
+                    return next(err);
+                });
+        });
 });
+
+//     Prompt.findById(req.query.prompt)
+//         .then(function(prompt) {
+//             var story = new Story({
+//                 user: global.currentUser,
+//                 prompt: prompt,
+//                 storyText: req.body.storyText,
+//                 storyHook: req.body.storyHook
+//             });
+//             story.save()
+//                 .then(function(saved) {
+//                     res.redirect('/');
+//                 }, function(err) {
+//                     return next(err);
+//                 });
+//         });
+
+// });
 
 // EDIT
 router.get('/:id/edit', authenticate, function(req, res, next) {

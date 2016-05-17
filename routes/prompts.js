@@ -15,7 +15,6 @@ router.get('/index', function(req, res, next) {
     // var prompts = global.currentUser.prompts;
     Prompt.find({ user: global.currentUser })
         .then(function(prompts) {
-            console.log('test1: prompts = ', prompts);
             res.render('prompts/index', { prompts: prompts, message: req.flash() });
         });
 });
@@ -37,7 +36,6 @@ router.get('/:id', authenticate, function(req, res, next) {
     // res.render('prompts/show', { prompt: prompt, message: req.flash() });
     Prompt.findById(req.params.id)
         .then(function(prompt) {
-            console.log('prompt:', prompt);
             res.render('prompts/show', { prompt: prompt, message: req.flash() });
         }, function(err) {
         return next(err);
