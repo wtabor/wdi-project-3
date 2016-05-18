@@ -24,6 +24,7 @@ to ***practice my creative writing***
 
 ----------
 I suspect these user stories will change in time.
+![](https://raw.githubusercontent.com/wtabor/wdi-project-3/master/documentation/images/20160513_userstories.jpg)
 
 https://blogs.balsamiq.com/champions/
 

@@ -5,8 +5,10 @@ We did our whiteboard brainstorming on our app, and over time the app has change
 ## Raw Photos ##
 Our whiteboard drawings;
 
-![](https://raw.githubusercontent.com/wtabor/wdi-project-3/master/documentation/images/20160513_ERD.jpg)
-Sample ERD, (needs to be replaced with Our whiteboard drawings)
+![](https://raw.githubusercontent.com/wtabor/wdi-project-3/master/documentation/images/20160513_homepage.jpg)
+(needs to be reduced in size, and reloaded)
+then insert the rest of the photos
+
 
 ## Drawn Mock-ups ##
 

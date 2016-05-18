@@ -1,6 +1,5 @@
 # Welcome to Project 3!
 
-TODO: Write a project description
 
 A simple kick-the-tires sample web application that demostrates use of NodeJS, ExpressJS and MongoDB built in one 5-day week as our team-based project 3 for WDI students at General Assembly ~ Atlanta in May 2016.
 
@@ -10,7 +9,6 @@ The sample app is a Create Writing site, where a user can find or write a writin
 
 ## Installation
 
-TODO: Describe the installation process
 
 **STEPS for Installing**
 
@@ -26,7 +24,7 @@ The live app lives over on our production Heroku server at: *<URL-link>*
 
 ## Usage
 
-TODO: Write usage instructions
+*TODO: Write better usage instructions*
 
 With the browser window open, navagate to the homepage at /
 
@@ -61,22 +59,22 @@ This project is licensed under the open-source public-domain MIT License.
 ----------
 
 ### Minimum Requirements
- [General Assembly] rubric
+Our guidelines are;
 
-* Have at least 2 models (more if they make sense) – one representing someone using your application, and one that represents the main functional idea for your app
-* Include sign up/log in functionality, with encrypted passwords & an authorization flow
-* Have complete RESTful routes for at least one of your resources with GET, POST, PUT, PATCH, and DELETE
-* Utilize an ORM to create a database table structure and interact with your relationally-stored data
-* Include wireframes that you designed during the planning process
-* Have semantically clean HTML and CSS
-* Be deployed online and accessible to the public
+1. Include sign up/log in functionality, with encrypted passwords & an authorization flow (**DONE**)
+1. Have complete RESTful routes for at least one of your resources with GET, POST, PUT, PATCH, and DELETE (**DONE**)
+1. Have at least 2 models (more if they make sense) – one representing someone using your application, and one that represents the main functional idea for your app (**DONE**)
+1. Utilize an ORM to create a database table structure and interact with your relationally-stored data (**DONE**)
+1. Include wireframes that you designed during the planning process (**DONE**)
+1. Have semantically clean HTML and CSS (**DONE**)
+1. Be deployed online and accessible to the public (**In-Process**)
 
 
 
 ### Planning
-Our [Trello](https://trello.com/b/jOxDUXPN/project-3 "Our Trello board") board
+Our [Trello](https://trello.com/b/jOxDUXPN/project-3 "Our Trello board") board.
 
-Our [Wireframes] page
+Our [Wireframes](https://github.com/wtabor/wdi-project-3/blob/master/documentation/wrireframedesigns.md "Our Wireframes page") page.
 
 ![](https://raw.githubusercontent.com/wtabor/wdi-project-3/master/documentation/images/erd.png)
 
@@ -92,10 +90,10 @@ Our ERD diagram
 -   Story Model
 
 ###Features
-  - Log in/Log out
-  - Authentication
-  - Authorization
-  - View Home without logging in
+  - Log in/Log out (**DONE**)
+  - Authentication (**DONE**)
+  - Authorization (**DONE**)
+  - View Home without logging in (**DONE**)
   - Full CRUD with hidden editing
 
 ###Technologies
