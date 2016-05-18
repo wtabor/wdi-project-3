@@ -17,7 +17,7 @@
       <% stories.forEach(function(story) { %>
         <h4>
           <form method="POST" action="/stories/<%= story._id %>?_method=DELETE">
-            <a href="/stories/<%= story._id %>">
+            <a href="/stories/<%= story._id %>?promptid=<%= story.prompt %>">
               <%= story.storyHook + ' - ' + story.storyText %>
             </a>
             <button type="submit" class="btn btn-xs btn-danger">Delete</button>
