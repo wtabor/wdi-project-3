@@ -40,7 +40,7 @@ router.get('/new', authenticate, function(req, res, next) {
 
 });
 
-// SHOW
+// SHOW WORKS DON'T TOUCH
 router.get('/:id', authenticate, function(req, res, next) {
 
     var promptid = req.query.promptid;
@@ -63,7 +63,7 @@ router.get('/:id', authenticate, function(req, res, next) {
     });
 });
 
-// CREATE
+// CREATE WORKS DON'T TOUCH
 router.post('/', authenticate, function(req, res, next) {
 
     console.log('req.query:', req.query);

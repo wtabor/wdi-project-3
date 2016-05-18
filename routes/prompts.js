@@ -32,30 +32,36 @@ router.get('/new', authenticate, function(req, res, next) {
 
 // SHOW
 router.get('/:id', authenticate, function(req, res, next) {
-    // var prompt = currentUser.prompts.id(req.params.id);
-    // if (!prompt) return next(makeError(res, 'Document not found', 404));
-    // res.render('prompts/show', { prompt: prompt, message: req.flash() });
+
+
+
+
     Prompt.findById(req.params.id)
         .then(function(prompt) {
             res.render('prompts/show', { prompt: prompt, message: req.flash() });
         }, function(err) {
-        return next(err);
-    });
+            return next(err);
+        });
+
+
+    // var prompt = currentUser.prompts.id(req.params.id);
+    // if (!prompt) return next(makeError(res, 'Document not found', 404));
+    // res.render('prompts/show', { prompt: prompt, message: req.flash() });
 });
 
 // CREATE
 router.post('/', authenticate, function(req, res, next) {
-    var prompt = new Prompt ({
+    var prompt = new Prompt({
         user: global.currentUser,
         promptTheme: req.body.promptTheme,
         promptText: req.body.promptText
     });
     prompt.save()
-    .then(function(saved) {
-        res.redirect('/prompts/index');
-    }, function(err) {
-        return next(err);
-    });
+        .then(function(saved) {
+            res.redirect('/prompts/index');
+        }, function(err) {
+            return next(err);
+        });
 });
 
 
@@ -65,8 +71,8 @@ router.get('/edit', authenticate, function(req, res, next) {
         .then(function(prompt) {
             res.render('prompts/edit', { prompt: prompt, message: req.flash() });
         }, function(err) {
-        return next(err);
-    });
+            return next(err);
+        });
 });
 
 // UPDATE
@@ -88,11 +94,11 @@ router.put('/:id', authenticate, function(req, res, next) {
 // DESTROY
 router.delete('/:id', authenticate, function(req, res, next) {
     Prompt.findByIdAndRemove(req.params.id)
-      .then(function() {
-        res.redirect('/prompts/index');
-      }, function(err) {
-        return next(err);
-      });
+        .then(function() {
+            res.redirect('/prompts/index');
+        }, function(err) {
+            return next(err);
+        });
 });
 
 module.exports = router;
