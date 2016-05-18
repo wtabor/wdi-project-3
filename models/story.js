@@ -6,7 +6,8 @@ var StorySchema = new mongoose.Schema({
         user:   { type: ObjectId, required: true },
         prompt: { type: ObjectId, required: true },
         storyText: { type: String, required: true, maxLength: 2000 },
-        storyHook: { type: String, required: true }
+        storyHook: { type: String, required: true },
+        promptText:{type: String}
     }, { timestamps: true } // createdAt, updatedAt
 );
 

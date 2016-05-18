@@ -42,10 +42,25 @@ router.get('/new', authenticate, function(req, res, next) {
 
 // SHOW
 router.get('/:id', authenticate, function(req, res, next) {
-    Story.findById(req.params.id)
-        .then(function(stories) {
-            res.render('stories/show', { stories: stories, message: req.flash() });
+
+    var promptid = req.query.promptid;
+    console.log("promptid " + promptid);
+
+    Prompt.findById(promptid)
+    .then(function(prompt) {
+        console.log("prompt text: " + prompt.promptText);
+        return Story.findById(req.params.id)
+        .then(function(story) {
+
+          story.promptText = prompt.promptText;
+
+          return story.save();
+        })
+        .then(function(saved) {
+            console.log("fullstory"+saved);
+            res.render('stories/show', { story: saved,  message: req.flash() });
         });
+    });
 });
 
 // CREATE
@@ -73,21 +88,34 @@ router.post('/', authenticate, function(req, res, next) {
 });
 
 // EDIT
+
 router.get('/edit', authenticate, function(req, res, next) {
-    console.log('req.query:', req.query);
-    Prompt.findById(req.query.prompt)
-        .then(function(prompt) {
-            console.log('prompt:', prompt);
-            var story = {
-                user: global.currentUser,
-                prompt: prompt,
-                storyText: '',
-                storyHook: ''
-            };
-            res.render('stories/edit', { story: story, prompt: prompt, message: req.flash() });
+    Story.findById(req.params.id)
+        .then(function(stories) {
+            res.render('stories/show', { stories: stories, message: req.flash() });
         });
 
+
+    console.log("hey look at me");
 });
+// router.get('/edit', authenticate, function(req, res, next) {
+
+//     console.log("hey you");
+
+//     // console.log('req.query.story:', req.query.story);
+//     // Prompt.findById(req.query.story)
+//     //     .then(function(prompt) {
+//     //         console.log('prompt:', prompt);
+//     //         var story = {
+//     //             user: global.currentUser,
+//     //             prompt: prompt,
+//     //             storyText: '',
+//     //             storyHook: ''
+//     //         };
+//     //         res.render('stories/edit', { story: story, prompt: prompt, message: req.flash() });
+//     //     });
+
+// });
 // router.get('/:id/edit', authenticate, function(req, res, next) {
 //     var story = currentUser.stories.id(req.params.id);
 //     if (!story) return next(makeError(res, 'Document not found', 404));
@@ -144,11 +172,11 @@ router.put('/:id', authenticate, function(req, res, next) {
 // DESTROY
 router.delete('/:id', authenticate, function(req, res, next) {
     Story.findByIdAndRemove(req.params.id)
-      .then(function() {
-        res.redirect('/stories/index');
-      }, function(err) {
-        return next(err);
-      });
+        .then(function() {
+            res.redirect('/stories/index');
+        }, function(err) {
+            return next(err);
+        });
 });
 
 module.exports = router;

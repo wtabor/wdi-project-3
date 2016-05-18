@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var authenticate = require('./authenticate');
 var Prompt = require('../models/prompt');
+var Story = require('../models/story');
 
 function makeError(res, message, status) {
     res.statusCode = status;
