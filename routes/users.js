@@ -7,27 +7,29 @@ var User = require('../models/user');
 // INDEX
 router.get('/index', authenticate, function(req, res, next) {
     var myuser = global.currentUser.user;
-    res.render('users/index', { users: myuser, message: req.flash() });
+    var myTitle = "Users Home";
+    res.render('users/index', { title: myTitle, users: myuser, message: req.flash() });
 });
 
 
 // SHOW
 router.get('/:id', authenticate, function(req, res, next) {
+    var myTitle = "User Show";
     // var user = global.currentUser.users.id(req.params.id);
     // if (!user) return next(makeError(res, 'Document Woot not found', 404));
     // res.render('users/show', { user: user, message: req.flash() });
     User.find({ user: global.currentUser })
         .then(function(users) {
-
-            res.render('users/show', { users: users, message: req.flash() });
+            res.render('users/show', { title: myTitle, users: users, message: req.flash() });
         });
 });
 
 // EDIT
 router.get('/:id/edit', authenticate, function(req, res, next) {
     var user = currentUser.users.id(req.params.id);
+    var myTitle = "User Edit";
     if (!user) return next(makeError(res, 'Document not found', 404));
-    res.render('user/edit', { user: user, message: req.flash() });
+    res.render('user/edit', {title: myTitle, user: user, message: req.flash() });
 });
 
 // UPDATE
