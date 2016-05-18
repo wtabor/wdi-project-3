@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <% include ../partials/head %>
+  <% include ../partials/head-i %>
 </head>
 
 <body class="container-fluid">
@@ -10,7 +10,31 @@
   </header>
 
   <main>
-   <p> My User Page Yo! </p>
+    <h1><%= title %></h1>
+    <p> My User Page Yo! the next conainters should be side by side, on desktop and stacked on small screen.</p>
+    <section class="prompts">
+      <p>Container are for a list of the Prompts this User has created. 
+        This page should be able to be called from a story (penName) link, and as such should not be an "authenicated" required type page. <br>
+        <i>(for each....)</i><br>
+        <ul>
+          <li>Prompt Theme - Prompt Text<li>
+          <li>Prompt Theme - Prompt Text<li>
+          <li>Prompt Theme - Prompt Text<li>
+        </ul>
+      </p>
+    </section>
+
+    <section class="stories">
+      <p>Container are for a list of the Stories this User has created. 
+        This page should be able to be called from a Story (penName) link, and as such should not be an "authenicated" required type page. <br>
+        <i>(for each....)</i><br>
+        <ul>
+          <li>Story Hook - Story Body<li>
+          <li>Story Hook - Story Body<li>
+          <li>Story Hook - Story Body<li>
+        </ul>
+      </p>
+    </section>
   </main>
 
   <footer>

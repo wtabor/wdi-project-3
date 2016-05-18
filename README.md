@@ -49,17 +49,10 @@ We wrote lots of sample routes, and tried embedding stories in prompts and promp
 ### Version
 1.0
 
-## Credits
-
-TODO: Write credits
-
 
 ## License
 
 This project is licensed under the open-source public-domain MIT License.
-
-
-
 
 
 
@@ -85,10 +78,13 @@ Our [Trello](https://trello.com/b/jOxDUXPN/project-3 "Our Trello board") board
 
 Our [Wireframes] page
 
-Our ERD diagram (embeded here)
+![](https://raw.githubusercontent.com/wtabor/wdi-project-3/master/documentation/images/erd.png)
+
+Our ERD diagram 
 
 ### User Stories
-[Link to User Stories Readme file]
+[Link to User Stories Readme file](https://github.com/wtabor/wdi-project-3/blob/master/documentation/userstories.md)
+
 
 ###Models
 -   User Model
@@ -103,6 +99,9 @@ Our ERD diagram (embeded here)
   - Full CRUD with hidden editing
 
 ###Technologies
+- Git and GitHub source control system
+([steps we use as a team](https://github.com/wtabor/wdi-project-3/blob/master/documentation/git-steps.md))
+- Heroku production server
 - HTML5
 - CSS3
 - Node.JS
