@@ -27,9 +27,22 @@ var storiesRouter = require('./routes/stories');
 var app = express();
 
 //=================================================
+// CONNECT TO DATABASE IF ON HEROKU
+//=================================================
+var uristring =
+process.env.MONGODB_URI ||
+'mongodb://localhost/promptsDB';
+
+//=================================================
 // CONNECT TO DATABASE
 //=================================================
-mongoose.connect('mongodb://localhost/promptsDB');
+mongoose.connect(uristring, function(err, res) {
+  if(err) {
+    console.log("Error connecting to " + uristring + ". " + err)
+  } else {
+    console.log("Success connecting to: " + uristring);
+  }
+});
 
 
 
