@@ -42,7 +42,6 @@ router.get('/new', authenticate, function(req, res, next) {
 
 // SHOW
 router.get('/:id', authenticate, function(req, res, next) {
-    console.log('test2: stories');
     Story.findById(req.params.id)
         .then(function(stories) {
             res.render('stories/show', { stories: stories, message: req.flash() });
@@ -74,26 +73,73 @@ router.post('/', authenticate, function(req, res, next) {
 });
 
 // EDIT
-router.get('/:id/edit', authenticate, function(req, res, next) {
-    var story = currentUser.stories.id(req.params.id);
-    if (!story) return next(makeError(res, 'Document not found', 404));
-    res.render('story/edit', { story: story, message: req.flash() });
+router.get('/edit', authenticate, function(req, res, next) {
+    console.log('req.query:', req.query);
+    Prompt.findById(req.query.prompt)
+        .then(function(prompt) {
+            console.log('prompt:', prompt);
+            var story = {
+                user: global.currentUser,
+                prompt: prompt,
+                storyText: '',
+                storyHook: ''
+            };
+            res.render('stories/edit', { story: story, prompt: prompt, message: req.flash() });
+        });
+
 });
+// router.get('/:id/edit', authenticate, function(req, res, next) {
+//     var story = currentUser.stories.id(req.params.id);
+//     if (!story) return next(makeError(res, 'Document not found', 404));
+//     res.render('story/edit', { story: story, message: req.flash() });
+// });
 
 // UPDATE
 router.put('/:id', authenticate, function(req, res, next) {
-    var story = currentUser.stories.id(req.params.id);
-    if (!story) return next(makeError(res, 'Document not found', 404));
-    else {
-        story.storyTheme = req.body.storyTheme;
-        currentUser.save()
-            .then(function(saved) {
-                res.redirect('/stories');
-            }, function(err) {
-                return next(err);
-            });
-    }
+    console.log('req.query:', req.query);
+    Story.findById(req.query.story)
+        .then(function(prompt) {
+            console.log('prompt:', prompt);
+            var story = {
+                user: global.currentUser,
+                prompt: req.body.prompt,
+                story: req.body.story,
+                storyHook: req.body.storyHook,
+                storyText: req.body.storyText
+            };
+            console.log('about to save story:', story);
+            story.save()
+                .then(function() {
+                    res.redirect('/');
+                    console.log("saved")
+                }, function(err) {
+                    return next(err);
+                });
+        });
 });
+
+
+
+
+
+
+
+
+
+
+
+//     var story = currentUser.stories.id(req.params.id);
+//     if (!story) return next(makeError(res, 'Document not found', 404));
+//     else {
+//         story.storyTheme = req.body.storyTheme;
+//         currentUser.save()
+//             .then(function(saved) {
+//                 res.redirect('/stories');
+//             }, function(err) {
+//                 return next(err);
+//             });
+//     }
+// });
 
 // DESTROY
 router.delete('/:id', authenticate, function(req, res, next) {

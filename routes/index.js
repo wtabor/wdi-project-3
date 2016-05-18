@@ -4,13 +4,13 @@ var passport = require('passport');
 
 // GET Homepage
 router.get('/', function(req, res, next) {
-    var myTitle = "Welcome-m";
+    var myTitle = "Welcome";
     res.render('index', { title: myTitle, message: req.flash() }); // add the message
 });
 
 // GET /signup
 router.get('/signup', function(req, res, next) {
-    var myTitle = "Signup-m";
+    var myTitle = "Signup";
     res.render('signup.ejs', { title: myTitle, message: req.flash() });
 });
 
@@ -26,14 +26,14 @@ router.post('/signup', function(req, res, next) {
 
 // GET /about
 router.get('/about', function(req, res, next) {
-    var myTitle = "About-m";
+    var myTitle = "About";
     res.render('about.ejs', {title: myTitle, message: req.flash() });
 });
 
 
 // GET /login
 router.get('/login', function(req, res, next) {
-    var myTitle = "Login-m";
+    var myTitle = "Login";
     res.render('login.ejs', {title: myTitle, message: req.flash() });
 });
 
