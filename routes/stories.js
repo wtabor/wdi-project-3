@@ -17,16 +17,16 @@ function makeError(res, message, status) {
 router.get('/index', authenticate, function(req, res, next) {
     // var stories = global.currentUser.stories;
     // res.render('stories/index', { stories: stories, message: req.flash() });
-    Story.find({ user: global.currentUser })
+    Story.find({})
         .then(function(stories) {
             res.render('stories/index', { stories: stories, message: req.flash() });
         });
 });
 
 // NEW
-router.get('/new', authenticate, function(req, res, next) {
-    console.log('req.query:', req.query);
-    Prompt.findById(req.query.prompt)
+router.get('/new/:pid', authenticate, function(req, res, next) {
+    //console.log('req.query:', req.query);
+    Prompt.findById(req.params.pid)
         .then(function(prompt) {
             console.log('prompt:', prompt);
             var story = {
@@ -43,10 +43,14 @@ router.get('/new', authenticate, function(req, res, next) {
 // SHOW WORKS DON'T TOUCH
 router.get('/:id', authenticate, function(req, res, next) {
 
-    var promptid = req.query.promptid;
-    console.log("promptid " + promptid);
-
-    Prompt.findById(promptid)
+/*    var promptid = req.query.promptid;
+    console.log("promptid " + promptid);*/
+    Story.findById(req.params.id)
+    .populate('prompt')
+    .exec(function(err, story) {
+        res.render('stories/show', {story: story, message: req.flash()});
+    });
+/*    Prompt.findById(promptid)
     .then(function(prompt) {
         console.log("prompt text: " + prompt.promptText);
         return Story.findById(req.params.id)
@@ -60,27 +64,35 @@ router.get('/:id', authenticate, function(req, res, next) {
             console.log("fullstory"+saved);
             res.render('stories/show', { story: saved,  message: req.flash() });
         });
-    });
+    });*/
 });
 
 // CREATE WORKS DON'T TOUCH
 router.post('/', authenticate, function(req, res, next) {
 
     console.log('req.query:', req.query);
-    Prompt.findById(req.query.prompt)
+    Prompt.findById(req.body.prompt)
         .then(function(prompt) {
             console.log('prompt:', prompt);
             var story = new Story({
-                user: global.currentUser,
-                prompt: req.body.prompt,
+                user: global.currentUser._id,
+                prompt: prompt._id,
                 storyHook: req.body.storyHook,
                 storyText: req.body.storyText
             });
             console.log('about to save story:', story);
             story.save()
-                .then(function() {
-                    res.redirect('/');
-                    console.log("saved")
+                .then(function(savedStory) {
+                    prompt.stories.push(savedStory._id);
+                    currentUser.stories.push(savedStory._id);
+                    prompt.save()
+                    .then(function() {
+                        currentUser.save()
+                        .then(function() {
+                            res.redirect('/');
+                            console.log("saved")
+                        });
+                    });
                 }, function(err) {
                     return next(err);
                 });

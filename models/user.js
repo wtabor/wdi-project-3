@@ -11,7 +11,9 @@ var UserSchema = new mongoose.Schema({
         penName: String,
         email: String,
         password: String
-    }
+    },
+    prompts: [{type: mongoose.Schema.ObjectId, ref: 'Prompt'}],
+    stories: [{type: mongoose.Schema.ObjectId, ref: 'Story'}]
 
 });
 

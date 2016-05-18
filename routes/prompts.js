@@ -14,7 +14,7 @@ function makeError(res, message, status) {
 // INDEX
 router.get('/index', function(req, res, next) {
     // var prompts = global.currentUser.prompts;
-    Prompt.find({ user: global.currentUser })
+    Prompt.find({})
         .then(function(prompts) {
             res.render('prompts/index', { prompts: prompts, message: req.flash() });
         });
@@ -32,36 +32,34 @@ router.get('/new', authenticate, function(req, res, next) {
 
 // SHOW
 router.get('/:id', authenticate, function(req, res, next) {
-
-
-
-
-    Prompt.findById(req.params.id)
-        .then(function(prompt) {
-            res.render('prompts/show', { prompt: prompt, message: req.flash() });
-        }, function(err) {
-            return next(err);
-        });
-
-
     // var prompt = currentUser.prompts.id(req.params.id);
     // if (!prompt) return next(makeError(res, 'Document not found', 404));
     // res.render('prompts/show', { prompt: prompt, message: req.flash() });
+    Prompt.findById(req.params.id)
+    .populate('stories')
+    .exec(function(err, prompt) {
+        res.render('prompts/show', { prompt: prompt, message: req.flash() });
+    }, function(err) {
+    return next(err);
+    });
 });
 
 // CREATE
 router.post('/', authenticate, function(req, res, next) {
-    var prompt = new Prompt({
-        user: global.currentUser,
+    var prompt = new Prompt ({
+        user: global.currentUser._id,
         promptTheme: req.body.promptTheme,
         promptText: req.body.promptText
     });
     prompt.save()
-        .then(function(saved) {
+    .then(function(saved) {
+        currentUser.prompts.push(saved._id);
+        currentUser.save(function(err) {
             res.redirect('/prompts/index');
-        }, function(err) {
-            return next(err);
         });
+    }, function(err) {
+        return next(err);
+    });
 });
 
 
@@ -71,8 +69,8 @@ router.get('/edit', authenticate, function(req, res, next) {
         .then(function(prompt) {
             res.render('prompts/edit', { prompt: prompt, message: req.flash() });
         }, function(err) {
-            return next(err);
-        });
+        return next(err);
+    });
 });
 
 // UPDATE
@@ -94,11 +92,11 @@ router.put('/:id', authenticate, function(req, res, next) {
 // DESTROY
 router.delete('/:id', authenticate, function(req, res, next) {
     Prompt.findByIdAndRemove(req.params.id)
-        .then(function() {
-            res.redirect('/prompts/index');
-        }, function(err) {
-            return next(err);
-        });
+      .then(function() {
+        res.redirect('/prompts/index');
+      }, function(err) {
+        return next(err);
+      });
 });
 
 module.exports = router;
