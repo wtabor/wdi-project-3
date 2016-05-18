@@ -10,10 +10,17 @@
   </header>
 
   <main>
-  <p> This page should show my story!</p>
-  <p> Hook: <%= stories.storyHook %></p>
-  <p> Text: <%= stories.storyText %></p>
+  <div class="prompt">
   <p> Prompt: <%= stories.prompt %></p>
+  </div>
+  <p> This page should show my story!</p>
+  <div class="hook">
+  <p> Hook: <%= stories.storyHook %></p>
+  </div>
+  <div class="text">
+  <p> Text: <%= stories.storyText %></p>
+  </div>
+
 
 
   <a href="/edit?stories=<%= stories._id %>" class="btn btn-primary">Edit Story</a>
