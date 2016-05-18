@@ -59,13 +59,10 @@ router.post('/', authenticate, function(req, res, next) {
 
 
 // EDIT
-router.get('/:id/edit', authenticate, function(req, res, next) {
-    // var prompt = currentUser.prompts.id(req.params.id);
-    // if (!prompt) return next(makeError(res, 'Document not found', 404));
-    // res.render('prompt/edit', { prompt: prompt, message: req.flash() });
-    Prompt.find({ user: global.currentUser })
-        .then(function(prompts) {
-            res.render('prompts/edit', { prompts: prompts, message: req.flash() });
+router.get('/edit', authenticate, function(req, res, next) {
+    Prompt.findById(req.query.prompt)
+        .then(function(prompt) {
+            res.render('prompts/edit', { prompt: prompt, message: req.flash() });
         }, function(err) {
         return next(err);
     });
@@ -77,7 +74,8 @@ router.put('/:id', authenticate, function(req, res, next) {
     if (!prompt) return next(makeError(res, 'Document not found', 404));
     else {
         prompt.promptTheme = req.body.promptTheme;
-        currentUser.save()
+        prompt.promptText = req.body.promptText;
+        Prompt.save()
             .then(function(saved) {
                 res.redirect('/prompts/index');
             }, function(err) {
