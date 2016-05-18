@@ -2,17 +2,44 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
+/// I think I need the Story, but not the Prompt, so far
+var Prompt = require('../models/prompt');
+var Story = require('../models/story');
+
+
+
 // GET Homepage
 router.get('/', function(req, res, next) {
+    function myObjectId(){
+      var myCars = ["Opel", "Saab", "GMC", "Ford", "Honda", "Volvo", "BMW"];
+      var max = myCars.length; 
+      var min = 0;
+      myRandomLocation(min,max);  
+
+      function myRandomLocation(min,max) {
+          myValue = Math.floor(Math.random() * (max - min)) + min;
+          return myValue;
+      };
+      myPickedCar = myCars[myValue]; 
+      // document.getElementById("demo1").innerHTML = myPickedCar;
+      console.log("myPickedCar1", myPickedCar);
+    };
+    myObjectId();
+    // console.log("myPickedCar2", myValue);
     var myTitle = "Welcome";
-    res.render('index', { title: myTitle, message: req.flash() }); // add the message
+    myDisplayedCar = myPickedCar;
+    res.render('index', { title: myTitle, myDisplayedData: myDisplayedCar, message: req.flash() }); // add the message
 });
+
+
 
 // GET /signup
 router.get('/signup', function(req, res, next) {
     var myTitle = "Signup";
     res.render('signup.ejs', { title: myTitle, message: req.flash() });
 });
+
+
 
 // POST /signup
 router.post('/signup', function(req, res, next) {
