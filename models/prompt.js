@@ -3,9 +3,10 @@ var ObjectId = mongoose.Schema.ObjectId;
 
 /// Schema configuration
 var PromptSchema = new mongoose.Schema({
-        user: { type: ObjectId, required: true },
+        user: { type: ObjectId, ref: 'User', required: true },
         promptTheme: { type: String, required: true },
-        promptText: { type: String, required: true }
+        promptText: { type: String, required: true },
+        stories: [{ type: ObjectId, ref: 'Story'}]
     }, { timestamps: true } // createdAt, updatedAt
 );
 
