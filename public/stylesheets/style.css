@@ -10,24 +10,16 @@
 
 
 .promptShowPromptText {
-  text-align: center;
-
-}
-
-
-.storyShowTheme {
-  padding-left: 2em;
+  padding-left: 30px;
 }
 
 .promptShowStoryHook {
-  text-align: center;
-  padding: 25px;
-
+  padding-left: 60px;
+  padding-top: 10px;
 }
 
 .promptIndexH1 {
   text-align: center;
-  padding: 50px;
 
 }
 
@@ -38,6 +30,7 @@
 
 .promptIndexPromptText {
   text-align: left;
+  max-width: 600px;
 }
 
 
