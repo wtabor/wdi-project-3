@@ -31,7 +31,7 @@ router.get('/new', authenticate, function(req, res, next) {
 });
 
 // SHOW
-router.get('/:id', authenticate, function(req, res, next) {
+router.get('/:id', function(req, res, next) {
     // var prompt = currentUser.prompts.id(req.params.id);
     // if (!prompt) return next(makeError(res, 'Document not found', 404));
     // res.render('prompts/show', { prompt: prompt, message: req.flash() });

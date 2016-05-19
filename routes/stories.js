@@ -19,7 +19,7 @@ router.get('/index', authenticate, function(req, res, next) {
     // res.render('stories/index', { stories: stories, message: req.flash() });
     Story.find({})
         .then(function(stories) {
-            res.render('stories/index', { stories: stories, message: req.flash() });
+            res.render('stories/index', { stories: stories, message: req.flash('Please log in') });
         });
 });
 
@@ -34,27 +34,26 @@ router.get('/new/:pid', authenticate, function(req, res, next) {
                 storyText: '',
                 storyHook: ''
             };
-            res.render('stories/new', { story: story, prompt: prompt, message: req.flash() });
+            res.render('stories/new', { story: story, prompt: prompt, message: req.flash('Please log in') });
         });
 
 });
 
 // SHOW WORKS DON'T TOUCH
-router.get('/:id', authenticate, function(req, res, next) {
+router.get('/:id', function(req, res, next) {
 
 
     Story.findById(req.params.id)
         .populate('prompt')
         .exec(function(err, story) {
-            res.render('stories/show', { story: story, message: req.flash() });
+            res.render('stories/show', { story: story, message: req.flash('Please log in') });
         });
 
 });
 
 // CREATE WORKS DON'T TOUCH
 router.post('/', authenticate, function(req, res, next) {
-    backURL = req.header('Referer') || '/';
-    console.log('req.query:', req.query);
+
     Prompt.findById(req.body.prompt)
         .then(function(prompt) {
             console.log('prompt:', prompt);
@@ -73,7 +72,7 @@ router.post('/', authenticate, function(req, res, next) {
                         .then(function() {
                             currentUser.save()
                                 .then(function() {
-                                    res.redirect(backURL);
+                                    res.redirect('/prompts/:pid');
                                     console.log("saved")
                                 });
                         });
