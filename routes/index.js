@@ -18,12 +18,13 @@ router.get('/', function(req, res, next) {
                     return myValue;
                 };
             myPickedStory = stories[myValue].storyText;
+            res.render('index', { title: myTitle, myDisplayedData: myPickedStory, message: req.flash() }); 
 
             // console.log("myStories -", stories[myValue]._id,  stories[myValue].storyHook);
             // var myRandonStory = "myRandonStory stuff here";
         });    
     // myDisplayedCar = myPickedStory;
-    res.render('index', { title: myTitle, myDisplayedData: myPickedStory, message: req.flash() }); 
+    // render line was here    
 });
 
 
