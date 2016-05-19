@@ -21,7 +21,7 @@
 
 .promptShowStoryHook {
   text-align: center;
-  padding: 50px;
+  padding: 25px;
 
 }
 
@@ -78,10 +78,21 @@ h4.storyShowHook {
 
 /*==========================================================================*/
 
-footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 60px;
-    width: 100%;
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+}
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -42px;
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  height: 42px;
 }
