@@ -25,7 +25,6 @@ router.get('/index', authenticate, function(req, res, next) {
 
 // NEW
 router.get('/new/:pid', authenticate, function(req, res, next) {
-    //console.log('req.query:', req.query);
     Prompt.findById(req.params.pid)
         .then(function(prompt) {
             console.log('prompt:', prompt);
@@ -43,33 +42,18 @@ router.get('/new/:pid', authenticate, function(req, res, next) {
 // SHOW WORKS DON'T TOUCH
 router.get('/:id', authenticate, function(req, res, next) {
 
-/*    var promptid = req.query.promptid;
-    console.log("promptid " + promptid);*/
+
     Story.findById(req.params.id)
-    .populate('prompt')
-    .exec(function(err, story) {
-        res.render('stories/show', {story: story, message: req.flash()});
-    });
-/*    Prompt.findById(promptid)
-    .then(function(prompt) {
-        console.log("prompt text: " + prompt.promptText);
-        return Story.findById(req.params.id)
-        .then(function(story) {
-
-          story.promptText = prompt.promptText;
-
-          return story.save();
-        })
-        .then(function(saved) {
-            console.log("fullstory"+saved);
-            res.render('stories/show', { story: saved,  message: req.flash() });
+        .populate('prompt')
+        .exec(function(err, story) {
+            res.render('stories/show', { story: story, message: req.flash() });
         });
-    });*/
+
 });
 
 // CREATE WORKS DON'T TOUCH
 router.post('/', authenticate, function(req, res, next) {
-
+    backURL = req.header('Referer') || '/';
     console.log('req.query:', req.query);
     Prompt.findById(req.body.prompt)
         .then(function(prompt) {
@@ -86,13 +70,13 @@ router.post('/', authenticate, function(req, res, next) {
                     prompt.stories.push(savedStory._id);
                     currentUser.stories.push(savedStory._id);
                     prompt.save()
-                    .then(function() {
-                        currentUser.save()
                         .then(function() {
-                            res.redirect('/');
-                            console.log("saved")
+                            currentUser.save()
+                                .then(function() {
+                                    res.redirect(backURL);
+                                    console.log("saved")
+                                });
                         });
-                    });
                 }, function(err) {
                     return next(err);
                 });
@@ -100,16 +84,29 @@ router.post('/', authenticate, function(req, res, next) {
 });
 
 // EDIT
-
-router.get('/edit', authenticate, function(req, res, next) {
-    Story.findById(req.params.id)
-        .then(function(stories) {
-            res.render('stories/show', { stories: stories, message: req.flash() });
+// NOT WORKING
+router.get('/new/:pid', authenticate, function(req, res, next) {
+    Prompt.findById(req.params.pid)
+        .then(function(prompt) {
+            console.log('prompt:', prompt);
+            var story = {
+                user: global.currentUser,
+                prompt: prompt,
+                storyText: '',
+                storyHook: ''
+            };
+            res.render('stories/edit', { story: story, prompt: prompt, message: req.flash() });
         });
 
-
-    console.log("hey look at me");
 });
+// Story.findById(req.params.id)
+//     .then(function(stories) {
+//         res.render('stories/show', { stories: stories, message: req.flash() });
+//     });
+
+
+// console.log("hey look at me");
+
 // router.get('/edit', authenticate, function(req, res, next) {
 
 //     console.log("hey you");
@@ -136,6 +133,7 @@ router.get('/edit', authenticate, function(req, res, next) {
 
 // UPDATE
 router.put('/:id', authenticate, function(req, res, next) {
+    backURL = req.header('Referer') || '/';
     console.log('req.query:', req.query);
     Story.findById(req.query.story)
         .then(function(prompt) {
@@ -150,22 +148,13 @@ router.put('/:id', authenticate, function(req, res, next) {
             console.log('about to save story:', story);
             story.save()
                 .then(function() {
-                    res.redirect('/');
+                    res.redirect(backURL);
                     console.log("saved")
                 }, function(err) {
                     return next(err);
                 });
         });
 });
-
-
-
-
-
-
-
-
-
 
 
 //     var story = currentUser.stories.id(req.params.id);

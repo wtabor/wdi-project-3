@@ -64,29 +64,32 @@ router.post('/', authenticate, function(req, res, next) {
 
 
 // EDIT
-router.get('/edit', authenticate, function(req, res, next) {
-    Prompt.findById(req.query.prompt)
-        .then(function(prompt) {
-            res.render('prompts/edit', { prompt: prompt, message: req.flash() });
-        }, function(err) {
-        return next(err);
-    });
+router.get('/edit/:pid', authenticate, function(req, res, next) {
+     prompt = {
+        promptTheme: 'prompt.promptTheme',
+        promptText: 'prompt.promptText'
+    };
+
+    res.render('prompts/edit', { prompt: prompt, message: req.flash() });
 });
 
+
 // UPDATE
-router.put('/:id', authenticate, function(req, res, next) {
-    var prompt = currentUser.prompts.id(req.params.id);
-    if (!prompt) return next(makeError(res, 'Document not found', 404));
-    else {
-        prompt.promptTheme = req.body.promptTheme;
-        prompt.promptText = req.body.promptText;
-        Prompt.save()
-            .then(function(saved) {
-                res.redirect('/prompts/index');
-            }, function(err) {
-                return next(err);
-            });
-    }
+router.post('/', authenticate, function(req, res, next) {
+    prompt =  ({
+        user: global.currentUser._id,
+        promptTheme: req.body.promptTheme,
+        promptText: req.body.promptText
+    });
+    prompt.save()
+    .then(function(saved) {
+        currentUser.prompts.push(saved._id);
+        currentUser.save(function(err) {
+            res.redirect('/prompts/index');
+        });
+    }, function(err) {
+        return next(err);
+    });
 });
 
 // DESTROY

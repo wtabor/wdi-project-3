@@ -10,15 +10,17 @@
   </header>
 
   <main>
-   <p> Theme: <%= prompt.promptTheme %></p>
-   <p> Text: <%= prompt.promptText %></p>
-   <% for(var i=0; i< prompt.stories.length; i++) { %>
-      <a href="/stories/<%= prompt.stories[i]._id %>"><p> Hook: <%= prompt.stories[i].storyHook%></p></a>
-   <% } %>
-   <a href="/stories/new/<%= prompt._id %>" class="btn btn-primary">New Story</a>
-<a href="/stories/edit" class="btn btn-danger">Edit Prompt</a>
 
-   <!-- For Each loop for the hooks of stories -->
+     <h2><%= prompt.promptTheme %></h2>
+     <h3><%= prompt.promptText %></h3>
+
+     <div class='hookslist'>
+     <% for(var i=0; i< prompt.stories.length; i++) { %>
+        <a href="/stories/<%= prompt.stories[i]._id %>"><p><%= prompt.stories[i].storyHook%></p></a>
+     <% } %>
+     <a href="/stories/new/<%= prompt._id %>" class="btn btn-primary">New Story</a>
+  <a href="/prompts/edit/<%= prompt._id %>" class="btn btn-danger">Edit Prompt</a>
+    </div>
   </main>
 
   <footer>
