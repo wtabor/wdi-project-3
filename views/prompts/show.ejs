@@ -19,9 +19,10 @@
      <h4 class='promptShowStoryHook'>
 
      <% for(var i=0; i< prompt.stories.length; i++) { %>
-        <a href="/stories/<%= prompt.stories[i]._id %>"><p><%= prompt.stories[i].storyHook%></p></a>
+        <a href="/stories/<%= prompt.stories[i]._id %>"><p><i class="fa fa-book" aria-hidden="true"></i>   <%= prompt.stories[i].storyHook%></p></a>
      <% } %>
     </h4>
+      <br>
     <a href="/prompts/edit/<%= prompt._id %>" class="btn btn-danger">Edit Prompt
         <i class="fa fa-cog fa-spin fa-lg fa-fw"></i>
         <span class="sr-only">Loading...</span>

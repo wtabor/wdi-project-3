@@ -29,8 +29,8 @@
 }
 
 .promptIndexPromptText {
-  text-align: left;
-  max-width: 600px;
+  padding-left: 30px;
+  padding-top: 10px;
 }
 
 
