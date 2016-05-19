@@ -92,8 +92,8 @@ router.get('/new/:pid', authenticate, function(req, res, next) {
             var story = {
                 user: global.currentUser,
                 prompt: prompt,
-                storyText: '',
-                storyHook: ''
+                storyText: 'new Story Text',
+                storyHook: 'new Story Hook'
             };
             res.render('stories/edit', { story: story, prompt: prompt, message: req.flash() });
         });
