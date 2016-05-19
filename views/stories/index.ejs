@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <% include ../partials/head %>
+  <% include ../partials/head-i %>
 </head>
 
 <body class="container-fluid">
@@ -12,7 +12,7 @@
   <main>
 
     <div>
-      <h3>Stories:</h3>
+      <h2><%= title %></h2>
       <% stories.forEach(function(story) { %>
         <h4>
           <form method="POST" action="/stories/<%= story._id %>?_method=DELETE">

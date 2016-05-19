@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <% include ../partials/head %>
+  <% include ../partials/head-i %>
 </head>
 
 <body class="container-fluid">
@@ -10,7 +10,7 @@
   </header>
 
   <main>
-    <h3>NEW</h3>
+    <h2><%= title %></h2>
     <p>Please create a story for the prompt:
     <p>Theme: <%= prompt.promptTheme %></p>
     <p>Text:  <%= prompt.promptText %></p>

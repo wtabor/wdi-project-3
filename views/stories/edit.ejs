@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <% include ../partials/head %>
+  <% include ../partials/head-i %>
 </head>
 
 <body class="container-fluid">
@@ -10,7 +10,7 @@
   </header>
 
   <main>
-    <h3>EDIT</h3>
+    <h3><%= title %></h3>
 
     <form class="story-form" action="/stories" method="post">
       <% include _form %>

@@ -15,13 +15,13 @@ function makeError(res, message, status) {
 
 // INDEX
 router.get('/index', authenticate, function(req, res, next) {
-    // var stories = global.currentUser.stories;
-    // res.render('stories/index', { stories: stories, message: req.flash() });
     Story.find({})
         .then(function(stories) {
-            res.render('stories/index', { stories: stories, message: req.flash('Please log in') });
+            var myTitle = "Stories Home";
+            res.render('stories/index', {title: myTitle,  stories: stories, message: req.flash('Please log in') });
         });
 });
+
 
 // NEW
 router.get('/new/:pid', authenticate, function(req, res, next) {
@@ -34,26 +34,25 @@ router.get('/new/:pid', authenticate, function(req, res, next) {
                 storyText: '',
                 storyHook: ''
             };
-            res.render('stories/new', { story: story, prompt: prompt, message: req.flash('Please log in') });
+            var myTitle = "New Story";
+            res.render('stories/new', {title: myTitle,  story: story, prompt: prompt, message: req.flash('Please log in') });
         });
-
 });
+
 
 // SHOW WORKS DON'T TOUCH
 router.get('/:id', function(req, res, next) {
-
-
     Story.findById(req.params.id)
         .populate('prompt')
         .exec(function(err, story) {
-            res.render('stories/show', { story: story, message: req.flash('Please log in') });
+            var myTitle = "Show Story";
+            res.render('stories/show', {title: myTitle,  story: story, message: req.flash('Please log in') });
         });
-
 });
+
 
 // CREATE WORKS DON'T TOUCH
 router.post('/', authenticate, function(req, res, next) {
-
     Prompt.findById(req.body.prompt)
         .then(function(prompt) {
             console.log('prompt:', prompt);
@@ -81,6 +80,7 @@ router.post('/', authenticate, function(req, res, next) {
                 });
         });
 });
+
 
 // EDIT
 // NOT WORKING
@@ -130,6 +130,7 @@ router.get('/new/:pid', authenticate, function(req, res, next) {
 //     res.render('story/edit', { story: story, message: req.flash() });
 // });
 
+
 // UPDATE
 router.put('/:id', authenticate, function(req, res, next) {
     backURL = req.header('Referer') || '/';
@@ -169,6 +170,7 @@ router.put('/:id', authenticate, function(req, res, next) {
 //     }
 // });
 
+
 // DESTROY
 router.delete('/:id', authenticate, function(req, res, next) {
     Story.findByIdAndRemove(req.params.id)
@@ -178,5 +180,6 @@ router.delete('/:id', authenticate, function(req, res, next) {
             return next(err);
         });
 });
+
 
 module.exports = router;
