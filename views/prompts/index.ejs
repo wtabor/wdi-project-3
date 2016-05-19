@@ -11,7 +11,9 @@
 
  <main class="page-wrap">
    <div>
-     <h3>Prompts:</h3>
+     <h3>Prompts:
+        <a href="/prompts/new" class="btn btn-primary pull-right">New Prompt   <i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
+     </h3>
      <% prompts.forEach(function(prompt) { %>
        <h4 class="promptIndexPromptText">
          <form method="POST" action="/prompts/<%= prompt._id %>?_method=DELETE">
@@ -23,8 +25,6 @@
        </h4>
      <% }) %>
    </div>
-   <br>
-   <a href="/prompts/new" class="btn btn-primary">New Prompt   <i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
 
  </main>
 
