@@ -13,17 +13,18 @@
    <div>
      <h3>Prompts:</h3>
      <% prompts.forEach(function(prompt) { %>
-       <h4>
+       <h4 class="promptIndexPromptText">
          <form method="POST" action="/prompts/<%= prompt._id %>?_method=DELETE">
            <a href="/prompts/<%= prompt._id %>">
-             <%= prompt.promptTheme + ' - ' + prompt.promptText %>
+             <i class="fa fa-file-text-o" aria-hidden="true"></i>   <%= prompt.promptTheme + ' - ' + prompt.promptText %>
            </a>
            <button type="submit" class="btn btn-xs btn-danger pull-right">Delete</button>
          </form>
        </h4>
      <% }) %>
    </div>
-   <a href="/prompts/new" class="btn btn-primary">New Prompt</a>
+   <br>
+   <a href="/prompts/new" class="btn btn-primary">New Prompt   <i class="fa fa-plus-square-o" aria-hidden="true"></i></a>
 
  </main>
 
