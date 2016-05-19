@@ -11,11 +11,10 @@
 
   <main>
     <h3>EDIT</h3>
-    <form class="prompt-form" action="/prompts" method="post">
+    <form class="prompt-form" action="/prompts/<%= prompt._id %>?_method=PUT" method="post">
       <% include _form %>
       <a href="/prompts/index" class="btn btn-primary">Back</a>
       <button type="submit" class="btn btn-success">Save</button>
-      <button type="submit" class="btn btn-danger">Delete</button>
     </form>
   </main>
 

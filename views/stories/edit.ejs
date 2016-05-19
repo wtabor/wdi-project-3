@@ -10,9 +10,9 @@
   </header>
 
   <main>
-    <h3><%= title %></h3>
 
-    <form class="story-form" action="/stories" method="post">
+
+    <form class="story-form" action="/stories/<%= story._id %>?_method=PUT" method="post">
       <% include _form %>
       <a href="/stories" class="btn btn-primary">Back</a>
       <button type="submit" class="btn btn-success">Save</button>
