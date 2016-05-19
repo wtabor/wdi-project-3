@@ -31,3 +31,10 @@ This is our sample project 3.  these are the steps we used in the Movies/Music
 	required my userID and password
 
 ## Repeat as needed ##
+
+Back to [repo](https://github.com/wtabor/wdi-project-3) readme
+
+we picked using feature1....feature2...x as our branching convention 
+
+![Project 3 Team](https://raw.githubusercontent.com/wtabor/wdi-project-3/master/documentation/images/20160513_project3team.jpg)
+**Project 3 Team**

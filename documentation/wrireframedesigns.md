@@ -1,13 +1,7 @@
 # Wire-frame Designs and User Flows #
 
-We did our whiteboard brainstorming on our app, and over time the app has changed as we worked through the design problems. 
+We did our whiteboard brainstorming on our app, and over time the app has changed as we worked through the design problems. Raw photos of the whiteboard drawings are below our drawings. 
 
-## Raw Photos ##
-Our whiteboard drawings;
-
-![](https://raw.githubusercontent.com/wtabor/wdi-project-3/master/documentation/images/20160513_homepage.jpg)
-(needs to be reduced in size, and reloaded)
-then insert the rest of the photos
 
 
 ## Drawn Mock-ups ##
@@ -30,6 +24,37 @@ A page showing the the Prompt, and your working on a Story "Hook", the teaser te
 
 ![](https://raw.githubusercontent.com/wtabor/wdi-project-3/master/documentation/images/~_story__id.png)
 A Show page for a Story, where it can be Edited or Deleted.
+
+
+----------
+
+Back to [repo](https://github.com/wtabor/wdi-project-3) readme
+
+----------
+## Raw Photos ##
+Our whiteboard drawings;
+
+![homepage index](https://raw.githubusercontent.com/wtabor/wdi-project-3/master/documentation/images/20160513_homepage.jpg)
+**homepage index**
+(needs to be reduced in size, and reloaded)
+then insert the rest of the photos
+
+![prompt index](https://raw.githubusercontent.com/wtabor/wdi-project-3/master/documentation/images/20160513_prompt-index.jpg)
+**prompt index**
+
+![prompt new](https://raw.githubusercontent.com/wtabor/wdi-project-3/master/documentation/images/20160513_prompt-new.jpg)
+**prompt new**
+
+![prompt hook to story](https://raw.githubusercontent.com/wtabor/wdi-project-3/master/documentation/images/20160513_prompt-hook2story.jpg)
+**prompt hook to story**
+
+![story index](https://raw.githubusercontent.com/wtabor/wdi-project-3/master/documentation/images/20160513_story-index.jpg)
+**story index**
+
+![user profile show](https://raw.githubusercontent.com/wtabor/wdi-project-3/master/documentation/images/20160513_user-profile.jpg)
+**user profile show**
+
+
 
 
 
