@@ -40,8 +40,6 @@ The user can signup, login, create a prompt and then write a story and logout.
 
 ## History
 
-TODO: Write history
-
 We wrote lots of sample routes, and tried embedding stories in prompts and prompts in users, much like a sample ToDo app might, but found we needed to Link, rather then embed our data. We had lots of samples and false turns to go down in the first 2 days.
 
 ### Version
@@ -102,6 +100,9 @@ Our ERD diagram
 - Heroku production server
 - HTML5
 - CSS3
+ 	- bootstrap
+	- bootswatch
+	- font-awesome
 - Node.JS
   - Express.JS
   - debug
@@ -116,8 +117,6 @@ Our ERD diagram
   - mongoose
 - MongoDB
 
-
-Trying not use Bootstrap?
 
 
 

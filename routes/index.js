@@ -1,12 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-
-/// I think I need the Story, but not the Prompt, so far
-var Prompt = require('../models/prompt');
 var Story = require('../models/story');
-
-
 
 // GET Homepage
 router.get('/', function(req, res, next) {
@@ -40,16 +35,16 @@ router.get('/signup', function(req, res, next) {
 });
 
 
-
 // POST /signup
 router.post('/signup', function(req, res, next) {
     var signUpStrategy = passport.authenticate('local-signup', {
-        successRedirect: '/',
-        failureRedirect: '/signup',
-        failureFlash: true
+      successRedirect: '/',
+      failureRedirect: '/signup',
+      failureFlash: true
     });
     return signUpStrategy(req, res, next);
 });
+
 
 // GET /about
 router.get('/about', function(req, res, next) {
@@ -63,6 +58,7 @@ router.get('/login', function(req, res, next) {
     var myTitle = "Login";
     res.render('login.ejs', {title: myTitle, message: req.flash() });
 });
+
 
 // POST /login
 router.post('/login', function(req, res, next) {
@@ -79,16 +75,5 @@ router.get('/logout', function(req, res, next) {
     req.logout();
     res.redirect('/');
 });
-
-// Restricted page
-// router.get('/secret', function(req, res, next) {
-//     if (currentUser) {
-//         res.render('secret.ejs');
-//     } else {
-//         res.redirect('/');
-//     }
-// });
-
-
 
 module.exports = router;
