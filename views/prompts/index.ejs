@@ -11,10 +11,14 @@
 
   <main>
     <div>
-      <h3>Prompts:</h3>
+      <h1 class="promptIndexH1">
+        <div class="promptIndexNewButton"> <a href="/prompts/new" class="btn btn-primary">New Prompt</a> </div>
+        Prompts:
+      </h1>
       <% prompts.forEach(function(prompt) { %>
-        <h4>
+        <h4 class="promptIndexPromptText">
           <form method="POST" action="/prompts/<%= prompt._id %>?_method=DELETE">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
             <a href="/prompts/<%= prompt._id %>">
               <%= prompt.promptTheme + ' - ' + prompt.promptText %>
             </a>
@@ -23,7 +27,6 @@
         </h4>
       <% }) %>
     </div>
-    <a href="/prompts/new" class="btn btn-primary">New Prompt</a>
 
   </main>
 

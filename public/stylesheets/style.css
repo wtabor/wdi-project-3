@@ -9,9 +9,35 @@
 .container-fluid {}
 
 
+.promptShowPromptText {
+  text-align: center;
+
+}
+
 
 .storyShowTheme {
   padding-left: 2em;
+}
+
+.promptShowStoryHook {
+  text-align: center;
+  padding: 50px;
+
+}
+
+.promptIndexH1 {
+  text-align: center;
+  padding: 50px;
+
+}
+
+.promptIndexNewButton {
+  text-align: left;
+
+}
+
+.promptIndexPromptText {
+  text-align: left;
 }
 
 .storyShowPromptText {
@@ -28,13 +54,6 @@ h4.storyShowHook {
 
 .form-control.input-lg {
     height: 6em;
-}
-
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
 }
 
 
@@ -58,3 +77,11 @@ h4.storyShowHook {
 
 
 /*==========================================================================*/
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+}
