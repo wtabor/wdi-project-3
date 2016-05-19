@@ -5,11 +5,30 @@
 
 }
 
-.prompt {
+.promptShowPromptText {
+  text-align: center;
 
 }
 
-.hook {
+.promptShowStoryHook {
+  text-align: center;
+  padding: 50px;
+
+}
+
+.promptIndexH1 {
+  text-align: center;
+  padding: 50px;
+
+}
+
+.promptIndexNewButton {
+  text-align: left;
+
+}
+
+.promptIndexPromptText {
+  text-align: left;
 
 }
 
@@ -28,3 +47,11 @@
 /*==========================================================================*/
 /* GLOBAL */
 /*==========================================================================*/
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+}

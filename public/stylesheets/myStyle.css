@@ -24,6 +24,7 @@ h2{
 }
 h3{
 	font-size: 1.17em ;
+  text-align: center;
 }
 a {
   color: #0000FF;
@@ -37,7 +38,7 @@ footer{
     background: orange;
     position: relative;
     left: 0;
-    width: 350px; 
+    width: 350px;
     height: 100px;
 }
 .stories{
@@ -45,6 +46,6 @@ footer{
     background: brown;
     position: relative;
     left: 0;
-    width: 350px; 
+    width: 350px;
     height: 100px;
 }

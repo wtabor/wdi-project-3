@@ -12,14 +12,16 @@
   <main>
 
      <h2><%= prompt.promptTheme %></h2>
-     <h3><%= prompt.promptText %></h3>
+     <h3 class="promptShowPromptText"><%= prompt.promptText %></h3>
+     <h4 class="promptShowPromptText">
+          <a href="/stories/new/<%= prompt._id %>" class="btn btn-primary">New Story</a>
+          <a href="/prompts/edit/<%= prompt._id %>" class="btn btn-danger">Edit Prompt</a>
+    </h4>
 
-     <div class='hookslist'>
+     <div class='promptShowStoryHook'>
      <% for(var i=0; i< prompt.stories.length; i++) { %>
         <a href="/stories/<%= prompt.stories[i]._id %>"><p><%= prompt.stories[i].storyHook%></p></a>
      <% } %>
-     <a href="/stories/new/<%= prompt._id %>" class="btn btn-primary">New Story</a>
-  <a href="/prompts/edit/<%= prompt._id %>" class="btn btn-danger">Edit Prompt</a>
     </div>
   </main>
 
