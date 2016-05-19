@@ -1,0 +1,50 @@
+/* This is michaels style page for users */
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+
+
+body {
+  padding: 50px;
+  font: 14px font-family: 'Oswald', sans-serif;
+  color: #1a1a1a;
+  background-color: white;
+}
+header{
+	color: #9400D3;
+	background-color: #90EE90;
+}
+main{
+	width: 800px;
+    background: #ccc;
+}
+h1{
+	font-size: 2.25em;
+}
+h2{
+	font-size: 1.75em ;
+}
+h3{
+	font-size: 1.17em ;
+}
+a {
+  color: #0000FF;
+}
+footer{
+	color: #9400D3;
+	background-color: #90EE90;
+}
+.prompts{
+	display: inline-block;
+    background: orange;
+    position: relative;
+    left: 0;
+    width: 350px; 
+    height: 100px;
+}
+.stories{
+	display: inline-block;
+    background: brown;
+    position: relative;
+    left: 0;
+    width: 350px; 
+    height: 100px;
+}
