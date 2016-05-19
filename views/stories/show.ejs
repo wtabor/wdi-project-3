@@ -9,24 +9,30 @@
     <% include ../partials/header %>
   </header>
 
-  <main class="storyShow">
+  <main>
+
   <div class="storyShowTheme">
-  <h2><%= story.prompt.promptTheme %></h2>
+    <h2><%= story.prompt.promptTheme %></h2>
   </div>
-  <div class="storyShowPromptText">
+
+<div id="storyShow">
+
+    <div class="storyShowPromptText">
   <h3><%= story.prompt.promptText %></h3>
-</div>
+  </div>
 
   <div class="storyShowHook">
-  <h4><%= story.storyHook %></h4>
+   <h4><%= story.storyHook %></h4>
   </div>
-  <div class="storyShowStoryText">
+
+   <div class="storyShowStoryText">
   <h5><%= story.storyText %></h5>
   </div>
+</div>
 
 
 <% if (currentUser) { %>
-  <a href="/stories/edit/<%= story._id %>" class="btn btn-primary">Edit Story</a>
+  <a href="/stories/edit/<%= story._id %>" class="btn btn-primary pull-right">Edit Story</a>
 <% } %>
   <div>
 <input type="hidden" id="prompttext" name="prompt" value="<%= story.prompt %>">

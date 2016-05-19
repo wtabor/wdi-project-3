@@ -8,25 +8,22 @@
 
 .container-fluid {}
 
-.storyShow {
-  text-align: center;
-  margin: auto;
-}
+
 
 .storyShowTheme {
-    text-align: center;
+  padding-left: 2em;
 }
 
 .storyShowPromptText {
     padding-left: 1.1em;
 }
 
-.storyShowHook {
-    text-align: center;
+h4.storyShowHook {
+  font-size: 2em;
 }
 
 .storyShowStoryText {
-    text-align: center;
+  font-size: 2em;
 }
 
 .form-control.input-lg {
@@ -48,7 +45,11 @@
 
 
 /*==========================================================================*/
-
+#storyShow {
+  text-align: center;
+  margin: auto;
+  max-width: 600px;
+}
 
 /*==========================================================================*/
 
