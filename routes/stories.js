@@ -72,7 +72,7 @@ router.post('/', authenticate, function(req, res, next) {
                         .then(function() {
                             currentUser.save()
                                 .then(function() {
-                                    res.redirect('/prompts/:pid');
+                                    res.redirect('/stories/' + savedStory._id);
                                     console.log("saved")
                                 });
                         });

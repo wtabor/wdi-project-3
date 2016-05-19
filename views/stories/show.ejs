@@ -11,9 +11,8 @@
 
   <main>
 
-  <div class="storyShowTheme">
-    <h2><%= story.prompt.promptTheme %></h2>
-  </div>
+  <h2 id='storyShowTheme'><%= story.prompt.promptTheme %></h2>
+
 
 <div id="storyShow">
 
@@ -32,7 +31,12 @@
 
 
 <% if (currentUser) { %>
-  <a href="/stories/edit/<%= story._id %>" class="btn btn-primary pull-right">Edit Story</a>
+  <a href="/stories/edit/<%= story._id %>" class="btn btn-primary pull-right">
+  Edit Story
+    <i class="fa fa-cog fa-spin fa-lg fa-fw"></i>
+<span class="sr-only">Loading...</span>
+  </a>
+
 <% } %>
   <div>
 <input type="hidden" id="prompttext" name="prompt" value="<%= story.prompt %>">

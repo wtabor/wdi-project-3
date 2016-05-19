@@ -40,11 +40,13 @@
   text-align: left;
 }
 
+
 .storyShowPromptText {
     padding-left: 1.1em;
+    font-size: 5em;
 }
 
-h4.storyShowHook {
+.storyShowHook {
   font-size: 2em;
 }
 
@@ -67,7 +69,13 @@ h4.storyShowHook {
 #storyShow {
   text-align: center;
   margin: auto;
-  max-width: 600px;
+  max-width: 800px;
+}
+
+#storyShowTheme {
+  font-size: 3em;
+  font-family: Merriweather;
+  padding-left: 1.5em;
 }
 
 /*==========================================================================*/
