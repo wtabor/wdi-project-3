@@ -1,5 +1,4 @@
-// stories.js
-
+// stories router
 var express = require('express');
 var router = express.Router();
 var Prompt = require('../models/prompt');
@@ -13,14 +12,33 @@ function makeError(res, message, status) {
     return error;
 }
 
+
 // INDEX
 router.get('/index', authenticate, function(req, res, next) {
+    var myTitle = "Stories Home";
     Story.find({})
         .then(function(stories) {
-            var myTitle = "Stories Home";
-            res.render('stories/index', {title: myTitle,  stories: stories, message: req.flash('Please log in') });
+        
+        /////////////////////////////////////////
+            var max = stories.length;
+            var min = 0;
+            myRandomLocation(min,max);  
+
+              function myRandomLocation(min,max) {
+                  myValue = Math.floor(Math.random() * (max - min)) + min;
+                  return myValue;
+              };
+            myPickedStory = stories[myValue].storyText;
+
+            console.log("myStories -", stories[myValue]._id,  stories[myValue].storyHook);
+            var myRandonStory = "myRandonStory stuff here";
+            ////////////////////////////////
+            res.render('stories/index', {title: myTitle, displayRandonStory: myPickedStory, stories: stories, message: req.flash() });
         });
 });
+
+
+
 
 
 // NEW
@@ -45,8 +63,8 @@ router.get('/:id', function(req, res, next) {
     Story.findById(req.params.id)
         .populate('prompt')
         .exec(function(err, story) {
-            var myTitle = "Show Story";
-            res.render('stories/show', {title: myTitle,  story: story, message: req.flash('Please log in') });
+           
+            res.render('stories/show', {  story: story, message: req.flash('Please log in') });
         });
 });
 
