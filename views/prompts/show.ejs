@@ -9,7 +9,7 @@
     <% include ../partials/header %>
   </header>
 
-  <main>
+  <main class="page-wrap">
 
      <h2><%= prompt.promptTheme %></h2>
      <h3 class="promptShowPromptText"><%= prompt.promptText %></h3>
@@ -19,7 +19,10 @@
     </h4>
 
 
-<div class='promptShowStoryHook'>
+    <h2 class="promptShowStoryHook"> Stories: </h2>
+
+     <div class='promptShowStoryHook'>
+
      <% for(var i=0; i< prompt.stories.length; i++) { %>
         <a href="/stories/<%= prompt.stories[i]._id %>"><p><%= prompt.stories[i].storyHook%></p></a>
      <% } %>
@@ -33,7 +36,7 @@
 
   </main>
 
-  <footer>
+  <footer class="site-footer">
     <% include ../partials/footer %>
   </footer>
 </body>

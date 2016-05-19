@@ -3,13 +3,13 @@
 <head>
   <% include ../partials/head %>
 </head>
-
+<div class="page-wrap">
 <body class="container-fluid">
   <header>
     <% include ../partials/header %>
   </header>
 
-  <main>
+<main class="page-wrap">
 
   <h2 id='storyShowTheme'><%= story.prompt.promptTheme %></h2>
 
@@ -43,8 +43,9 @@
 </div>
 
   </main>
+</div>
 
-  <footer>
+  <footer class="site-footer">
     <% include ../partials/footer %>
   </footer>
 </body>
