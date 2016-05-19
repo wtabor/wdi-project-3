@@ -24,8 +24,8 @@ router.get('/index', authenticate, function(req, res, next) {
 
 
 // NEW
-router.get('/new/:pid', authenticate, function(req, res, next) {
-    Prompt.findById(req.params.pid)
+router.get('/new/:id', authenticate, function(req, res, next) {
+    Prompt.findById(req.params.id)
         .then(function(prompt) {
             console.log('prompt:', prompt);
             var story = {
@@ -50,7 +50,7 @@ router.get('/:id', function(req, res, next) {
         });
 });
 
-// CREATE WORKS DON'T TOUCH
+// CREATE
 router.post('/', authenticate, function(req, res, next) {
     Prompt.findById(req.body.prompt)
         .then(function(prompt) {
@@ -85,7 +85,8 @@ router.get('/edit/:id', authenticate, function(req, res, next) {
     Story.findById(req.params.id)
         .then(function(story) {
             var myTitle = "Stories Home";
-            res.render('stories/edit', { story: story, title: myTitle, message: req.flash() });
+            res.render('stories/edit', { story: story, title: myTitle, prompt: ""+story.prompt, message: req.flash() });
+            //USE prompt: ""+story.prompt TO GET PROMPT
         });
 });
 
