@@ -5,7 +5,7 @@ var User = require('../models/user');
 var Prompt = require('../models/prompt');
 
 // http://localhost:3000/users/index/
-// http://localhost:3000/users/show/
+
 
 
 // INDEX
@@ -20,14 +20,19 @@ router.get('/index', authenticate, function(req, res, next) {
 // SHOW
 router.get('/:id', authenticate, function(req, res, next) {
     var myTitle = "User Show";
-    // var user = global.currentUser.users.id(req.params.id);
-    // if (!user) return next(makeError(res, 'Document Woot not found', 404));
-    // res.render('users/show', { user: user, message: req.flash() });
+
     User.find({ user: global.currentUser })
         .then(function(users) {
-            res.render('users/show', { title: myTitle, users: users, message: req.flash() });
-        });
-});
+             Prompt.find({})
+                .then(function(prompts) {
+                    console.log("USERS-prompt", prompts[0].promptText );
+
+                    res.render('users/show', { title: myTitle, users: users, prompts: prompts, message: req.flash() });    
+                });  /// closes off the prompt  
+        });  /// closes off the user
+});  /// closes off the router get
+     
+// http://localhost:3000/users/show/
 
 
 // EDIT

@@ -1,12 +1,11 @@
 /* This is michaels style page for users */
 @import url(https://fonts.googleapis.com/css?family=Oswald);
 
-
 body {
-  padding: 50px;
-  font: 14px font-family: 'Oswald', sans-serif;
+  /*padding: 50px;*/
+/*  font: 14px font-family: 'Oswald', sans-serif;
   color: #1a1a1a;
-  background-color: white;
+  background-color: white;*/
 }
 header{
 	color: #9400D3;
@@ -19,11 +18,11 @@ main{
   margin: 0 auto;
 }
 
-footer{
+/*footer{
 	color: #9400D3;
 	background-color: #90EE90;
   bottom: 0;
-}
+}*/
 .floatMyBoat {
    float: left;
    margin: 10px;
@@ -33,25 +32,25 @@ footer{
    border: 1px solid black;
 } 
 .prompts-container{
-  background: orange;
+  /*background: orange;*/
   display: inline-block;
   width: 450px;
   text-align: left;
   padding: 20px;
 /*  background-color: #d3f3f3;*/
-  border: 1px solid red;
+  /*border: 1px solid red;*/
   /*border-radius: 3px;*/
   margin: 15px;
   vertical-align: top;
 }
 .stories-container{
-  background: brown;
+  /*background: brown;*/
   display: inline-block;
   width: 450px;
   text-align: left;
   padding: 20px;
 /*  background-color: #d1d2d3;*/
-  border: 1px solid red;
+ /* border: 1px solid red;*/
   /*border-radius: 3px;*/
   margin: 15px;
 }
