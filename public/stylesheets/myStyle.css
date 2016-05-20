@@ -32,23 +32,28 @@ footer{
    height: 300px;
    border: 1px solid black;
 } 
-.prompts{
-	display: inline-block;
-  float: left;  
-    background: orange;
-    position: relative;
-    left: 0;
-    width: 445px;
-    /*height: 100px;*/
+.prompts-container{
+  background: orange;
+  display: inline-block;
+  width: 450px;
+  text-align: left;
+  padding: 20px;
+/*  background-color: #d3f3f3;*/
+  border: 1px solid red;
+  /*border-radius: 3px;*/
+  margin: 15px;
+  vertical-align: top;
 }
-.stories{
-	display: inline-block;
-  float: right;
-    background: brown;
-    position: relative;
-    left: 0;
-    width: 445px;
-    /*height: 100px;*/
+.stories-container{
+  background: brown;
+  display: inline-block;
+  width: 450px;
+  text-align: left;
+  padding: 20px;
+/*  background-color: #d1d2d3;*/
+  border: 1px solid red;
+  /*border-radius: 3px;*/
+  margin: 15px;
 }
 #clear {
     clear: both;
