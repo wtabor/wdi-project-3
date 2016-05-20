@@ -4,6 +4,28 @@
 // and my randon thing
 //////
 
+///////////////////////////
+      <% prompts.forEach(function(prompt) { %>
+        <a href="/prompts/<%= prompt._id %>">
+          <i class="fa fa-file-text-o"></i><%= prompt.promptTheme + ' - ' + prompt.promptText %>
+        </a>                  
+      <% }) %>
+///////////////////////////
+
+///////////////////////////
+<% stories.forEach(function(story) { %>        
+  <a href="/stories/<%= story._id %>">
+    <%= story.storyHook + ' - ' + story.storyText %>
+  </a>                
+<% }) %>
+////////////////////////   
+Story.find({})
+                        .then(function(stories) {
+                            console.log("USERS-story", stories[0].storyHook );
+                            
+                        }); /// closes off the story 
+//////////////////////                           
+
 
 // INDEX
 router.get('/index', authenticate, function(req, res, next) {

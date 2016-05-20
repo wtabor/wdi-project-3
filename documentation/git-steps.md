@@ -1,6 +1,7 @@
 # Sample Project 3
 
-This is our sample project 3.  these are the steps we used in the Movies/Music
+This is our sample project 3. 
+
 We decided to use these guidelines;
 
 - **Use One GitHub Repo**
@@ -13,7 +14,7 @@ We decided to use these guidelines;
 - ***git clone URL***
 - ***git checkout -b feature1***
 	
-	which moved me onto movies branch
+	which moved me onto featured branch, is this also consided the "working tree"
 
 	Created a file, and edited it
 
@@ -29,7 +30,7 @@ We decided to use these guidelines;
 - ***git pull***
 - ***git merge feature1***
 	
-	merging my movies branch back into master
+	merging my featured branch back into master
 
 - ***git status***
 - ***git push***

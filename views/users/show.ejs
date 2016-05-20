@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <% include ../partials/head-i %>
+  <% include ../partials/head %>
   <link rel="stylesheet" type="text/css" href="/stylesheets/myStyle.css">
 </head>
 
@@ -18,26 +18,25 @@
     <p>These are the Story Prompts and Stories you have writen.</p> 
     
 
-    <section class="prompts-container">
+    <section class="prompts-container page-wrap">
       <p>Story Prompts Container are for a list of the Prompts this User has created.
-        This page should be able to be called from a story (penName) link, and as such should not be an "authenicated" required type page. <br>
-        <i>&lt;prompts.forEach(function(prompt)&gt;</i><br>
+        This page should be able to be called from a story (penName) link, and as such should not be an  required type page. <br>
+        </p>
         <ul>
-          <li>Prompt Theme - Prompt Text<li>
-          <li>Prompt Theme - Prompt Text<li>
-          <li>Prompt Theme - Prompt Text<li>
-        </ul>
-      </p>
-      <% prompts.forEach(function(prompt) { %>
-        <a href="/prompts/<%= prompt._id %>">
-          <i class="fa fa-file-text-o"></i><%= prompt.promptTheme + ' - ' + prompt.promptText %>
-        </a>                  
-      <% }) %>
+        <!-- Prompt loop here -->
+        <% prompts.forEach(function(prompt) { %>
+         <li class="fa fa-file-text-o"><a href="/prompts/<%= prompt._id %>">
+            <%= prompt.promptTheme + ' - ' + prompt.promptText %>
+          </a></li>                 
+        <% }) %>
+        <!-- Prompt loop here -->
+         </ul>
+      
     </section>
 
     <section class="stories-container">
       <p>Container are for a list of the Stories this User has created.
-        This page should be able to be called from a Story (penName) link, and as such should not be an "authenicated" required type page. <br>
+        This page should be able to be called from a Story (penName) link, and as such should not be an required type page. <br>
         <i>&lt;stories.forEach(function(story)&gt;</i><br>
         <ul>
           <li>Story Hook - Story Body<li>
@@ -50,7 +49,7 @@
     <div id="clear"></div>
   </main>
 
-  <footer>
+  <footer  class="site-footer">
     <% include ../partials/footer %>
   </footer>
 </body>
