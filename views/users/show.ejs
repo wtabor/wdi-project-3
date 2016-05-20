@@ -10,14 +10,17 @@
     <% include ../partials/header %>
   </header>
 
-  <main>
-    <h1><%= title %></h1>
-    <p> My User Page Yo! the next conainters should be side by side, on desktop and stacked on small screen.</p>
+  <main>    
 
-    <section class="prompts">
+    <div style="width:900px; background-color: #ffcc33; margin: 0 auto"> 
+    <h1><%= title %></h1>
+    <p>the next conainters should be side by side, on desktop and stacked on small screen</p> 
+    
+
+    <section class="floatMyBoat">
       <p>Container are for a list of the Prompts this User has created.
         This page should be able to be called from a story (penName) link, and as such should not be an "authenicated" required type page. <br>
-        <i>(for each....)</i><br>
+        <i>&lt;prompts.forEach(function(prompt)&gt;</i><br>
         <ul>
           <li>Prompt Theme - Prompt Text<li>
           <li>Prompt Theme - Prompt Text<li>
@@ -26,10 +29,10 @@
       </p>
     </section>
 
-    <section class="stories">
+    <section class="floatMyBoat">
       <p>Container are for a list of the Stories this User has created.
         This page should be able to be called from a Story (penName) link, and as such should not be an "authenicated" required type page. <br>
-        <i>(for each....)</i><br>
+        <i>&lt;stories.forEach(function(story)&gt;</i><br>
         <ul>
           <li>Story Hook - Story Body<li>
           <li>Story Hook - Story Body<li>
@@ -37,6 +40,8 @@
         </ul>
       </p>
     </section>
+  </div>
+    <div id="clear"></div>
   </main>
 
   <footer>

@@ -1,5 +1,4 @@
-// stories.js
-
+// stories router
 var express = require('express');
 var router = express.Router();
 var Prompt = require('../models/prompt');
@@ -13,14 +12,18 @@ function makeError(res, message, status) {
     return error;
 }
 
+
 // INDEX
 router.get('/index', authenticate, function(req, res, next) {
+    var myTitle = "Stories Home";
     Story.find({})
         .then(function(stories) {
             var myTitle = "Stories Home";
             res.render('stories/index', { title: myTitle, stories: stories, message: req.flash('Please log in') });
         });
 });
+
+
 
 
 // NEW
