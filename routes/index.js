@@ -28,7 +28,7 @@ router.get('/', function(req, res, next) {
 // GET /signup
 router.get('/signup', function(req, res, next) {
     var myTitle = "Signup";
-    res.render('signup.ejs', { title: myTitle, message: req.flash() });
+    res.render('signup.ejs', { title: myTitle, loggedIn: currentUser, message: req.flash() });
 });
 
 
@@ -46,14 +46,14 @@ router.post('/signup', function(req, res, next) {
 // GET /about
 router.get('/about', function(req, res, next) {
     var myTitle = "About";
-    res.render('about.ejs', {title: myTitle, message: req.flash() });
+    res.render('about.ejs', {title: myTitle, loggedIn: currentUser, message: req.flash() });
 });
 
 
 // GET /login
 router.get('/login', function(req, res, next) {
     var myTitle = "Login";
-    res.render('login.ejs', {title: myTitle, message: req.flash() });
+    res.render('login.ejs', {title: myTitle, loggedIn: currentUser, message: req.flash() });
 });
 
 

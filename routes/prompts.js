@@ -16,7 +16,7 @@ router.get('/index', function(req, res, next) {
     // var prompts = global.currentUser.prompts;
     Prompt.find({})
         .then(function(prompts) {
-            res.render('prompts/index', { prompts: prompts, message: req.flash() });
+            res.render('prompts/index', { prompts: prompts, loggedIn: currentUser, message: req.flash() });
         });
 });
 
@@ -27,7 +27,7 @@ router.get('/new', authenticate, function(req, res, next) {
         promptText: ''
     };
 
-    res.render('prompts/new', { prompt: prompt, message: req.flash() });
+    res.render('prompts/new', { prompt: prompt, loggedIn: currentUser, message: req.flash() });
 });
 
 // SHOW
@@ -35,7 +35,7 @@ router.get('/:id', function(req, res, next) {
     Prompt.findById(req.params.id)
     .populate('stories')
     .exec(function(err, prompt) {
-        res.render('prompts/show', { prompt: prompt, message: req.flash() });
+        res.render('prompts/show', { prompt: prompt, loggedIn: currentUser, message: req.flash() });
     }, function(err) {
     return next(err);
     });
@@ -64,7 +64,7 @@ router.post('/', authenticate, function(req, res, next) {
 router.get('/edit/:id', authenticate, function(req, res, next) {
      Prompt.findById(req.params.id)
      .then(function(prompt){
-        res.render('prompts/edit', { prompt: prompt, message: req.flash() });
+        res.render('prompts/edit', { prompt: prompt, loggedIn: currentUser, message: req.flash() });
      });
 });
 

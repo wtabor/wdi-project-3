@@ -13,7 +13,7 @@ module.exports = authenticate;
 
 
 
-function authorize(req, res, next) {
+function authorized (req, res, next) {
   if (currentUser) {
     next();
   } else {
