@@ -20,8 +20,13 @@
            <a href="/prompts/<%= prompt._id %>">
              <i class="fa fa-file-text-o" aria-hidden="true"></i>   <%= prompt.promptTheme + ' - ' + prompt.promptText %>
            </a>
-          <% if (loggedIn) { %>
+
+        <% if (currentUser) { %>
+
+
+          <% if ('' + prompt.user == ''+currentUser._id) { %>
            <button type="submit" class="btn btn-xs btn-danger pull-right">Delete   <i class="fa fa-trash" aria-hidden="true"></i></button>
+                   <% } %>
                    <% } %>
          </form>
        </h4>
