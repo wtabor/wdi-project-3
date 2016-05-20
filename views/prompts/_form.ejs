@@ -1,13 +1,17 @@
 <div class="form-group">
-  <label for="promptTheme">Prompt Theme</label>
-  <input type="text"
-         class="form-control"
-         name="promptTheme"
-         value="<%= prompt.promptTheme %>">
+  <label for="promptTheme" class="col-lg-2 control-label">Themes</label>
+      <select class="form-control" id="select" name="promptTheme" value="<%= prompt.promptTheme %>" type="text">
+        <option>Sci-Fi</option>
+        <option>Horror</option>
+        <option>Romance</option>
+        <option>Fantasy</option>
+        <option>Mystery</option>
+        <option>Other</option>
+      </select>
 </div>
 
 <div class="form-group">
-  <label for="promptText">Prompt</label>
+  <label for="promptText" class="col-lg-2 control-label">Prompt</label>
   <input type="text"
          class="form-control"
          name="promptText"
