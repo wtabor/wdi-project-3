@@ -8,26 +8,20 @@ var Story = require('../models/story');
 // GET Homepage
 router.get('/', function(req, res, next) {
     var myTitle = "Welcome";
-    // Story.find({})
-    //     .then(function(stories) {
-    //         var max = stories.length;
-    //         var min = 0;
-    //         myRandomLocation(min,max);
-    //             function myRandomLocation(min,max) {
-    //                 myValue = Math.floor(Math.random() * (max - min)) + min;
-    //                 return myValue;
-    //             };
-    //         myPickedStory = stories[myValue].storyText;
-            res.render('index', { title: myTitle, message: req.flash() });
+    Story.find({})
+        .then(function(stories) {
+            var max = stories.length;
+            var min = 0;
+            myRandomLocation(min,max);
+                function myRandomLocation(min,max) {
+                    myValue = Math.floor(Math.random() * (max - min)) + min;
+                    return myValue;
+                };
+            myPickedStory = stories[myValue].storyText;
+            res.render('index', { title: myTitle, myDisplayedData: myPickedStory, message: req.flash() });
 
-            // myDisplayedData: myPickedStory,
-
-            // console.log("myStories -", stories[myValue]._id,  stories[myValue].storyHook);
-            // var myRandonStory = "myRandonStory stuff here";
         });
-    // myDisplayedCar = myPickedStory;
-    // render line was here
-// });
+});
 
 
 
