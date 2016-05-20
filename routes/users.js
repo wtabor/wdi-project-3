@@ -25,12 +25,21 @@ router.get('/:id', authenticate, function(req, res, next) {
 });
 
 // EDIT
-router.get('/:id/edit', authenticate, function(req, res, next) {
-    var user = currentUser.users.id(req.params.id);
-    var myTitle = "User Edit";
-    if (!user) return next(makeError(res, 'Document not found', 404));
-    res.render('user/edit', {title: myTitle, user: user, message: req.flash() });
+router.get('/edit/:id', authenticate, function(req, res, next) {
+    var myTitle = "User Show";
+    User.find({ user: global.currentUser })
+        .then(function(users) {
+            res.render('users/edit', { title: myTitle, users: users, message: req.flash() });
+        });
 });
+
+
+
+//     var user = currentUser.users.id(req.params.id);
+//     var myTitle = "User Edit";
+//     if (!user) return next(makeError(res, 'Document not found', 404));
+//     res.render('user/edit', {title: myTitle, user: user, message: req.flash() });
+// });
 
 // UPDATE
 router.put('/:id', authenticate, function(req, res, next) {

@@ -86,19 +86,26 @@ router.get('/edit/:id', authenticate, function(req, res, next) {
         .then(function(story) {
             var myTitle = "Stories Home";
             res.render('stories/edit', { story: story, title: myTitle, prompt: ""+story.prompt, message: req.flash() });
-            //USE prompt: ""+story.prompt TO GET PROMPT
+            //USE prompt: ""+story.prompt TO GET PROMPT as type recursion
         });
 });
 
 // UPDATE
 router.put('/:id', authenticate, function(req, res, next) {
-    Story.findByIdAndUpdate(req.params.id, req.body)
-        .then(function() {
-            res.redirect('/stories/' + req.params.id);
-        }, function(err) {
-            return next(err);
-        });
+    var update = {
+        storyHook: req.body.storyHook,
+        storyText: req.body.storyText
+    }
+    Story.findByIdAndUpdate(req.params.id, update) //because of type recursion earlier, must pass in only values that update, not req.body
+    .then(function() {
+        console.log(req.params.id);
+        res.redirect('/prompts/index');
+      }, function(err) {
+        return next(err);
+      });
 });
+
+
 
 // DESTROY
 router.delete('/:id', authenticate, function(req, res, next) {
