@@ -13,39 +13,43 @@ header{
 	background-color: #90EE90;
 }
 main{
-	width: 800px;
-    background: #ccc;
+	/*width: 900px;*/
+  /*text-align: center;*/
+  /*background-color: #ffcc33;*/
+  margin: 0 auto;
 }
-h1{
-	font-size: 2.25em;
-}
-h2{
-	font-size: 1.75em ;
-}
-h3{
-	font-size: 1.17em ;
-  text-align: center;
-}
-a {
-  color: #0000FF;
-}
+
 footer{
 	color: #9400D3;
 	background-color: #90EE90;
+  bottom: 0;
 }
+.floatMyBoat {
+   float: left;
+   margin: 10px;
+   padding: 10px;
+   width: 300px;
+   height: 300px;
+   border: 1px solid black;
+} 
 .prompts{
 	display: inline-block;
+  float: left;  
     background: orange;
     position: relative;
     left: 0;
-    width: 350px;
-    height: 100px;
+    width: 445px;
+    /*height: 100px;*/
 }
 .stories{
 	display: inline-block;
+  float: right;
     background: brown;
     position: relative;
     left: 0;
-    width: 350px;
-    height: 100px;
+    width: 445px;
+    /*height: 100px;*/
+}
+#clear {
+    clear: both;
 }

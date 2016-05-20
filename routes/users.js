@@ -3,11 +3,15 @@ var router = express.Router();
 var authenticate = require('./authenticate');
 var User = require('../models/user');
 
+// http://localhost:3000/users/index/
+// http://localhost:3000/users/show/
+
 
 // INDEX
 router.get('/index', authenticate, function(req, res, next) {
     var myuser = global.currentUser.user;
     var myTitle = "Users Home";
+        console.log("USER TEST", myuser);
     res.render('users/index', { title: myTitle, users: myuser, message: req.flash() });
 });
 
@@ -24,6 +28,7 @@ router.get('/:id', authenticate, function(req, res, next) {
         });
 });
 
+
 // EDIT
 router.get('/:id/edit', authenticate, function(req, res, next) {
     var user = currentUser.users.id(req.params.id);
@@ -31,6 +36,7 @@ router.get('/:id/edit', authenticate, function(req, res, next) {
     if (!user) return next(makeError(res, 'Document not found', 404));
     res.render('user/edit', {title: myTitle, user: user, message: req.flash() });
 });
+
 
 // UPDATE
 router.put('/:id', authenticate, function(req, res, next) {
@@ -46,6 +52,7 @@ router.put('/:id', authenticate, function(req, res, next) {
             });
     }
 });
+
 
 // DESTROY
 router.delete('/:id', authenticate, function(req, res, next) {

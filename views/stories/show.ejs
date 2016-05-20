@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <% include ../partials/head %>
+  <% include ../partials/head %>
 </head>
 
 <body class="container-fluid">
@@ -10,24 +10,22 @@
  </header>
 
  <main class="page-wrap">
+ 	<h2 id='storyShowTheme'><%= story.prompt.promptTheme %></h2>
 
- <h2 id='storyShowTheme'><%= story.prompt.promptTheme %></h2>
-
-
-<div id="storyShow">
-<br>
-   <div class="storyShowPromptText">
- <h3><%= story.prompt.promptText %></h3>
- </div>
-<br>
- <div class="storyShowHook">
-  <h4><%= story.storyHook %></h4>
- </div>
-<br>
-  <div class="storyShowStoryText">
- <h5><%= story.storyText %></h5>
- </div>
-</div>
+	<div id="storyShow">
+		<br>
+   		<div class="storyShowPromptText">
+			<h3><%= story.prompt.promptText %></h3>
+		</div>
+		<br>
+ 		<div class="storyShowHook">
+  			<h4><%= story.storyHook %></h4>
+ 		</div>
+		<br>
+	  	<div class="storyShowStoryText">
+	 		<h5><%= story.storyText %></h5>
+	 	</div>
+	</div>
 
 
 <% if (currentUser) { %>
