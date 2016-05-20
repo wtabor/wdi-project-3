@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var authenticate = require('./authenticate');
 var User = require('../models/user');
+var Prompt = require('../models/prompt');
 
 // http://localhost:3000/users/index/
 // http://localhost:3000/users/show/
