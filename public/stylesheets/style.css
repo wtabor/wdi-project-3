@@ -6,9 +6,11 @@
 
 /*==========================================================================*/
 
-.container-fluid {}
+/*.container-fluid {
+  background-color: rgb(223, 247, 232);
+}*/
 
-
+/* PROMPT PAGE */
 .promptShowPromptText {
   padding-left: 30px;
 }
@@ -33,19 +35,12 @@
   padding-top: 10px;
 }
 
-
-.storyShowPromptText {
-    padding-left: 1.1em;
-    font-size: 5em;
+.test {
+  margin: 0 auto;
+  display: inline-block;
+  position: absolute center;
 }
 
-.storyShowHook {
-  font-size: 2em;
-}
-
-.storyShowStoryText {
-  font-size: 2em;
-}
 
 .form-control.input-lg {
     height: 6em;
@@ -60,16 +55,24 @@
 
 /*==========================================================================*/
 #storyShow {
+  padding-top: 2em;
+  position: absolute center;
   text-align: center;
   margin: auto;
-  max-width: 800px;
+  max-width: 1000px;
 }
 
-#storyShowTheme {
-  font-size: 3em;
-  font-family: Merriweather;
-  padding-left: 1.5em;
+#storyHook {
+
 }
+
+#storyText {
+  padding-top: 20px;
+  display: inline-block;
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
 
 /*==========================================================================*/
 
