@@ -1,11 +1,17 @@
 # Sample Project 3
 
 This is our sample project 3.  these are the steps we used in the Movies/Music
+We decided to use these guidelines;
+
+- **Use One GitHub Repo**
+- **Use Feature Branches** (new feature branch for each new step)
+- **Pull Before Merging**
+- **Deploy From Master Branch**
 
 
 ## Gokemon's steps ##
 - ***git clone URL***
-- ***git checkout -b michael***
+- ***git checkout -b feature1***
 	
 	which moved me onto movies branch
 
@@ -21,7 +27,7 @@ This is our sample project 3.  these are the steps we used in the Movies/Music
 	getting ready to push to GitHub
 
 - ***git pull***
-- ***git merge michael***
+- ***git merge feature1***
 	
 	merging my movies branch back into master
 

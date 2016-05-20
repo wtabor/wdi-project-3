@@ -10,15 +10,16 @@
     <% include ../partials/header %>
   </header>
 
-  <main>    
+  <main class="container">
+  <!-- http://localhost:3000/users/show/ -->    
 
-    <div style="width:900px; background-color: #ffcc33; margin: 0 auto"> 
-    <h1><%= title %></h1>
-    <p>the next conainters should be side by side, on desktop and stacked on small screen</p> 
+    <h1> <%= title %> </h1>
+    <h3>Welcome <%= currentUser.local.email %> </h3>
+    <p>These are the Story Prompts and Stories you have writen.</p> 
     
 
-    <section class="floatMyBoat">
-      <p>Container are for a list of the Prompts this User has created.
+    <section class="prompts-container">
+      <p>Story Prompts Container are for a list of the Prompts this User has created.
         This page should be able to be called from a story (penName) link, and as such should not be an "authenicated" required type page. <br>
         <i>&lt;prompts.forEach(function(prompt)&gt;</i><br>
         <ul>
@@ -27,9 +28,14 @@
           <li>Prompt Theme - Prompt Text<li>
         </ul>
       </p>
+      <% prompts.forEach(function(prompt) { %>
+        <a href="/prompts/<%= prompt._id %>">
+          <i class="fa fa-file-text-o"></i><%= prompt.promptTheme + ' - ' + prompt.promptText %>
+        </a>                  
+      <% }) %>
     </section>
 
-    <section class="floatMyBoat">
+    <section class="stories-container">
       <p>Container are for a list of the Stories this User has created.
         This page should be able to be called from a Story (penName) link, and as such should not be an "authenicated" required type page. <br>
         <i>&lt;stories.forEach(function(story)&gt;</i><br>
