@@ -3,7 +3,7 @@
 
 A simple kick-the-tires sample web application that demostrates use of NodeJS, ExpressJS and MongoDB built in one 5-day week as our team-based project 3 for WDI students at General Assembly ~ Atlanta in May 2016.
 
-#### Your outlet for creative writing!
+#### Your outlet to express creative writing!
 The sample app is a Create Writing site, where a user can find or write a writing Prompt, and then write a Story from the Prompt, while securely used CRUD (Create, Read, Update, and Delete) operations because of the Authentication and Authorization features from Passport, authentication middleware for Node.js.
 
 
@@ -68,7 +68,8 @@ Our [guidelines](https://github.com/ATL-WDI-Exercises/project-three-requirements
 
 
 
-### Planning
+### Planning of the project. 
+
 Our [Trello](https://trello.com/b/jOxDUXPN/project-3 "Our Trello board") board.
 
 Our [Wireframes](https://github.com/wtabor/wdi-project-3/blob/master/documentation/wrireframedesigns.md "Our Wireframes page") page.
